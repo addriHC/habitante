@@ -107,6 +107,43 @@ nav *,
     opacity: 0;
 }
 
+/* Hide all video controls on iOS and all browsers */
+video {
+    pointer-events: none;
+}
+
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+video::-moz-media-controls {
+    display: none !important;
+}
+
+video::-ms-media-controls {
+    display: none !important;
+}
+
+video::--webkit-media-controls-timeline {
+    display: none !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
