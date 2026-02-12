@@ -216,53 +216,26 @@
                 <source src="https://blueways.es/12937422-hd_1920_1080_30fps.mp4" type="video/mp4">
             </video>
 
-            <!-- Nuclear Solution: Opaque div to cover the video and its play button until it ACTUALLY plays -->
-            <div id="videoLoader"
-                class="absolute inset-0 z-20 bg-[#050505] transition-opacity duration-1000 pointer-events-none"></div>
+            <!-- Transparent overlay to block video interaction on iOS -->
+            <div class="video-overlay"></div>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     var video = document.getElementById('heroVideo');
-                    var loader = document.getElementById('videoLoader');
-
-                    if (video && loader) {
+                    if (video) {
                         video.muted = true;
-
-                        // Function to reveal video only when it's actually playing
-                        var revealVideo = function () {
-                            loader.style.opacity = '0';
-                            // Remove styles that might hide the video itself (from previous attempts)
-                            video.style.opacity = '1';
-                            video.classList.remove('video-hidden');
-                        };
-
-                        // Listen for actual playback
-                        video.addEventListener('playing', revealVideo);
-                        video.addEventListener('timeupdate', function () {
-                            if (video.currentTime > 0.1) revealVideo();
-                        });
-
-                        var tryPlay = function () {
-                            var promise = video.play();
-                            if (promise !== undefined) {
-                                promise.catch(function (e) {
-                                    console.log("Autoplay blocked");
-                                });
-                            }
-                        };
-
-                        tryPlay();
-
-                        var onInteract = function () {
-                            tryPlay();
-                            video.muted = false; // Optional: unmute on interaction if desired, but risky for background video
-                            video.muted = true; // Keep muted for background behavior
-                            document.removeEventListener('touchstart', onInteract);
-                            document.removeEventListener('click', onInteract);
-                        };
-
-                        document.addEventListener('touchstart', onInteract, { passive: true });
-                        document.addEventListener('click', onInteract, { passive: true });
+                        var playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(function (error) {
+                                // Auto-play was prevented, try again on user interaction
+                                document.body.addEventListener('touchstart', function () {
+                                    video.play();
+                                }, { once: true });
+                                document.body.addEventListener('click', function () {
+                                    video.play();
+                                }, { once: true });
+                            });
+                        }
                     }
                 });
             </script>

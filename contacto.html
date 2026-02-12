@@ -168,35 +168,20 @@
                 <source src="https://blueways.es/5829169-uhd_3840_2160_24fps.mp4" type="video/mp4">
             </video>
 
-            <div id="videoLoader"
-                class="absolute inset-0 z-20 bg-[var(--bg-dark)] transition-opacity duration-1000 pointer-events-none">
-            </div>
+            <div class="video-overlay"></div>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     var video = document.getElementById('heroVideo');
-                    var loader = document.getElementById('videoLoader');
-                    if (video && loader) {
+                    if (video) {
                         video.muted = true;
-                        var revealVideo = function () {
-                            loader.style.opacity = '0';
-                        };
-                        video.addEventListener('playing', revealVideo);
-                        video.addEventListener('timeupdate', function () { if (video.currentTime > 0.1) revealVideo(); });
-
-                        var tryPlay = function () {
-                            var promise = video.play();
-                            if (promise !== undefined) { promise.catch(function (e) { }); }
-                        };
-                        tryPlay();
-                        var onInteract = function () {
-                            tryPlay();
-                            video.muted = true;
-                            document.removeEventListener('touchstart', onInteract);
-                            document.removeEventListener('click', onInteract);
-                        };
-                        document.addEventListener('touchstart', onInteract, { passive: true });
-                        document.addEventListener('click', onInteract, { passive: true });
+                        var playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(function (error) {
+                                document.body.addEventListener('touchstart', function () { video.play(); }, { once: true });
+                                document.body.addEventListener('click', function () { video.play(); }, { once: true });
+                            });
+                        }
                     }
                 });
             </script>
