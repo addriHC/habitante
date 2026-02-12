@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Plataforma | Habitante | Ecosistema de Gestión</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/MKncLryk/habitantelogo2.png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION (Matches Home) -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+        <div class="glass-nav rounded-2xl px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
+                        class="h-10 w-auto" />
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center gap-10">
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="index.html">Inicio</a>
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="inversores.html">Inversores</a>
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="quienes-somos.html">Quiénes somos</a>
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="marketplace.html">Marketplace</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-[var(--primary)] text-white px-8 py-2.5 rounded-full text-sm font-bold tracking-tight hover:brightness-105 transition-all shadow-md">
+                    ACCEDER
+                </button>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2"><span
+                        class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
+        <div class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-6 border-b border-white/10">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante" class="h-8">
+                    <button onclick="closeMobileMenu()" class="text-white p-2"><span
+                            class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-6 space-y-2">
+                    <a href="index.html"
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">Inicio</a>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('quienes')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Quiénes Somos</span>
+                            <span id="quienes-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="quienes-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="quienes-somos.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Quiénes Somos</a>
+                            <a href="sociedades.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Sociedades del
+                                Grupo</a>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('proyectos')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Proyectos</span>
+                            <span id="proyectos-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="proyectos-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="marketplace.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Promociones en
+                                Curso</a>
+                            <a href="proyectos-estudio.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Proyectos en
+                                Estudio</a>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('inversion')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Inversión</span>
+                            <span id="inversion-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="inversion-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="inversores.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Crowdfunding</a>
+                            <a href="iniciativas.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-white/10">
+                    <a href="contacto.html"
+                        class="block w-full bg-[var(--primary)] text-black text-center py-3 rounded-xl font-bold text-sm">CONTACTO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+        function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
+    </script>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-48 pb-32 overflow-hidden bg-[var(--bg-dark)]">
+        <div class="container mx-auto px-8 relative z-20 text-center max-w-4xl">
+            <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-6">
+                PropTech Platform
+            </p>
+            <h1 class="text-6xl md:text-8xl leading-[0.9] font-editorial font-bold mb-10 text-gradient">
+                Tu patrimonio,<br />
+                <span class="italic font-normal">bajo control</span> digital.
+            </h1>
+            <p class="text-xl text-slate-400 font-light mx-auto leading-relaxed mb-12">
+                Nuestra plataforma centraliza la gestión de tus proyectos, inversiones y documentación legal en un
+                entorno seguro y transparente.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#"
+                    class="bg-[var(--primary)] text-black px-12 py-5 rounded-full font-bold text-lg hover:brightness-110 transition-all shadow-xl">
+                    Acceder a Plataforma
+                </a>
+                <a href="#demo"
+                    class="glass-nav text-white px-12 py-5 rounded-full font-bold text-lg border border-white/20 hover:bg-white/5 transition-all">
+                    Solicitar Demo
+                </a>
+            </div>
+            <p class="mt-8 text-xs text-slate-600 uppercase tracking-widest font-bold font-editorial italic">*
+                Lanzamiento total Q3 2026. Acceso beta disponible para inversores.</p>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="py-32 bg-surface">
+        <div class="container mx-auto px-8">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span
+                        class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">dashboard_customize</span>
+                    <h3 class="text-2xl font-editorial mb-4">Gestión de Proyectos</h3>
+                    <p class="text-sm text-slate-500">Visualiza el avance real de tus promociones con integración
+                        directa de gemelos digitales BIM 10D.</p>
+                </div>
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span
+                        class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">account_balance_wallet</span>
+                    <h3 class="text-2xl font-editorial mb-4">Seguimiento de Inversiones</h3>
+                    <p class="text-sm text-slate-500">Monitorea tus rentabilidades, dividendos y movimientos financieros
+                        en tiempo real con trazabilidad total.</p>
+                </div>
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">folder_managed</span>
+                    <h3 class="text-2xl font-editorial mb-4">Documentación Legal</h3>
+                    <p class="text-sm text-slate-500">Archivo digital seguro con todos tus contratos firmados,
+                        certificados de inversión y reportes técnicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-24 bg-surface border-t border-white/5">
+        <div class="container mx-auto px-8 text-center">
+            <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
+                class="h-10 w-auto opacity-30 mx-auto mb-8 grayscale invert" />
+            <p class="text-slate-600 text-[10px] tracking-[0.2em] uppercase">© 2026 Habitante. PropTech Ecosystem.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
