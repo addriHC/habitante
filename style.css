@@ -109,11 +109,13 @@ nav *,
 
 /* Hide all video controls on iOS and all browsers */
 video {
-    pointer-events: none;
+    pointer-events: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 video::-webkit-media-controls {
     display: none !important;
+    -webkit-appearance: none !important;
 }
 
 video::-webkit-media-controls-enclosure {
@@ -126,9 +128,27 @@ video::-webkit-media-controls-panel {
 
 video::-webkit-media-controls-play-button {
     display: none !important;
+    -webkit-appearance: none !important;
 }
 
 video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none !important;
+}
+
+video::-webkit-media-controls-timeline {
+    display: none !important;
+}
+
+video::-webkit-media-controls-current-time-display {
+    display: none !important;
+}
+
+video::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+}
+
+video::-webkit-media-controls-fullscreen-button {
     display: none !important;
 }
 
@@ -142,6 +162,15 @@ video::-ms-media-controls {
 
 video::--webkit-media-controls-timeline {
     display: none !important;
+}
+
+/* Video overlay to block all interactions */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: auto;
+    background: transparent;
 }
 
 /* Custom Scrollbar */
