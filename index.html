@@ -212,24 +212,43 @@
     <header class="relative h-screen w-full flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny"
-                preload="auto" disableRemotePlayback class="absolute inset-0 w-full h-full object-cover z-0">
+                preload="auto" disableRemotePlayback
+                class="absolute inset-0 w-full h-full object-cover z-0 video-hidden">
                 <source src="https://blueways.es/12937422-hd_1920_1080_30fps.mp4" type="video/mp4">
             </video>
             <script>
-                // Force video autoplay on mobile devices
                 document.addEventListener('DOMContentLoaded', function () {
                     var video = document.getElementById('heroVideo');
                     if (video) {
                         video.muted = true;
-                        var playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(function (error) {
-                                // Auto-play was prevented, try again on user interaction
-                                document.body.addEventListener('touchstart', function () {
-                                    video.play();
-                                }, { once: true });
-                            });
-                        }
+
+                        var tryPlay = function () {
+                            var promise = video.play();
+                            if (promise !== undefined) {
+                                promise.then(function () {
+                                    // Autoplay started!
+                                    video.classList.add('video-visible');
+                                    video.classList.remove('video-hidden');
+                                }).catch(function (error) {
+                                    // Autoplay was prevented.
+                                    // Wait for interaction without showing play button
+                                });
+                            }
+                        };
+
+                        tryPlay();
+
+                        // Retry on any user interaction
+                        var onInteract = function () {
+                            tryPlay();
+                            video.classList.add('video-visible'); // Show anyway on interaction
+                            video.classList.remove('video-hidden');
+                            document.removeEventListener('touchstart', onInteract);
+                            document.removeEventListener('click', onInteract);
+                        };
+
+                        document.addEventListener('touchstart', onInteract, { passive: true });
+                        document.addEventListener('click', onInteract, { passive: true });
                     }
                 });
             </script>

@@ -164,7 +164,8 @@
     <header class="relative pt-48 pb-20 overflow-hidden bg-[var(--bg-dark)]">
         <div class="absolute inset-0 z-0">
             <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny"
-                preload="auto" disableRemotePlayback class="absolute inset-0 w-full h-full object-cover z-0">
+                preload="auto" disableRemotePlayback
+                class="absolute inset-0 w-full h-full object-cover z-0 video-hidden">
                 <source src="https://blueways.es/5829169-uhd_3840_2160_24fps.mp4" type="video/mp4">
             </video>
             <script>
@@ -172,12 +173,25 @@
                     var video = document.getElementById('heroVideo');
                     if (video) {
                         video.muted = true;
-                        var playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(function (error) {
-                                document.body.addEventListener('touchstart', function () { video.play(); }, { once: true });
-                            });
-                        }
+                        var tryPlay = function () {
+                            var promise = video.play();
+                            if (promise !== undefined) {
+                                promise.then(function () {
+                                    video.classList.add('video-visible');
+                                    video.classList.remove('video-hidden');
+                                }).catch(function (e) { });
+                            }
+                        };
+                        tryPlay();
+                        var onInteract = function () {
+                            tryPlay();
+                            video.classList.add('video-visible');
+                            video.classList.remove('video-hidden');
+                            document.removeEventListener('touchstart', onInteract);
+                            document.removeEventListener('click', onInteract);
+                        };
+                        document.addEventListener('touchstart', onInteract, { passive: true });
+                        document.addEventListener('click', onInteract, { passive: true });
                     }
                 });
             </script>

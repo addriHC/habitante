@@ -107,10 +107,18 @@ nav *,
     opacity: 0;
 }
 
+/* Global hide for start playback button on iOS */
+*::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none !important;
+}
+
 /* Hide all video controls on iOS and all browsers */
 video {
     pointer-events: none !important;
     -webkit-tap-highlight-color: transparent !important;
+    /* Prevent default play button */
+    -webkit-media-controls: none !important;
 }
 
 video::-webkit-media-controls {
@@ -168,9 +176,20 @@ video::--webkit-media-controls-timeline {
 .video-overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 10;
+    /* Increased z-index */
     pointer-events: auto;
     background: transparent;
+}
+
+/* Utility to hide video until playing */
+.video-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.video-visible {
+    opacity: 1;
 }
 
 /* Custom Scrollbar */
