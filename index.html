@@ -211,9 +211,28 @@
     </script>
     <header class="relative h-screen w-full flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline
+                class="absolute inset-0 w-full h-full object-cover z-0">
                 <source src="https://blueways.es/12937422-hd_1920_1080_30fps.mp4" type="video/mp4">
             </video>
+            <script>
+                // Force video autoplay on mobile devices
+                document.addEventListener('DOMContentLoaded', function () {
+                    var video = document.getElementById('heroVideo');
+                    if (video) {
+                        video.muted = true;
+                        var playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(function (error) {
+                                // Auto-play was prevented, try again on user interaction
+                                document.body.addEventListener('touchstart', function () {
+                                    video.play();
+                                }, { once: true });
+                            });
+                        }
+                    }
+                });
+            </script>
             <div
                 class="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)] via-[var(--bg-dark)]/60 to-transparent z-10 pointer-events-none">
             </div>
