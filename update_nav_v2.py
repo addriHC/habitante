@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html class="scroll-smooth dark" lang="es">
+import os
+import re
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Recursos & Legal | Habitante | Transparencia Total</title>
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/MKncLryk/habitantelogo2.png" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-</head>
+files = [
+    "contacto.html",
+    "iniciativas.html",
+    "inversores.html",
+    "marketplace.html",
+    "plataforma.html",
+    "proyecto-detalle.html",
+    "proyectos-estudio.html",
+    "quienes-somos.html",
+    "recursos.html",
+    "sociedades.html"
+]
 
-<body class="antialiased overflow-x-hidden">
+base_path = r"c:\Users\adrin\Downloads\habitante web"
 
-    <!-- NAVIGATION (Matches Home) -->
-        <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+# The CORRECT Desktop Nav Block
+new_nav = """    <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
         <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
 
             <div class="flex items-center">
@@ -108,8 +107,10 @@
                 </button>
             </div>
         </div>
-    </nav>
-        <!-- Mobile Menu Overlay -->
+    </nav>"""
+
+# The CORRECT Mobile Menu Block
+new_mobile = """    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
@@ -202,116 +203,36 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
-        document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
-        function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
-    </script>
+    </div>"""
 
-    <!-- HERO SECTION -->
-    <header class="relative pt-48 pb-20 overflow-hidden bg-[var(--bg-dark)]">
-        <div class="container mx-auto px-8 max-w-4xl">
-            <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-6">
-                Transparencia & Seguridad
-            </p>
-            <h1 class="text-6xl md:text-8xl leading-[0.9] font-editorial font-bold mb-10 text-gradient">
-                Recursos <br />
-                <span class="italic font-normal">& Legalidad.</span>
-            </h1>
-            <p class="text-xl text-slate-400 font-light leading-relaxed">
-                Toda la información técnica, procesos de inversión y marcos legales que necesitas para invertir con
-                total confianza en Habitante.
-            </p>
-        </div>
-    </header>
+for filename in files:
+    full_path = os.path.join(base_path, filename)
+    if not os.path.exists(full_path):
+        continue
+    
+    with open(full_path, 'r', encoding='utf-8') as f:
+        content = f.read()
 
-    <!-- FAQS SECTION -->
-    <section class="py-32 bg-surface">
-        <div class="container mx-auto px-8">
-            <h2 class="text-4xl font-editorial mb-20 text-center italic">Preguntas <span
-                    class="text-[var(--primary)] font-normal">Frecuentes.</span></h2>
-            <div class="max-w-3xl mx-auto space-y-6">
-                <div class="glass-nav rounded-3xl p-8 border border-white/5 cursor-pointer group">
-                    <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-lg">¿Cómo funciona la firma digital?</h4>
-                        <span
-                            class="material-symbols-outlined text-[var(--primary)] group-hover:rotate-180 transition-transform">expand_more</span>
-                    </div>
-                    <div class="mt-4 text-slate-500 text-sm leading-relaxed hidden group-hover:block">
-                        Utilizamos una plataforma de firma biométrica digital certificada por la UE. Una vez selecciones
-                        tu inversión, recibirás un enlace seguro para firmar los contratos desde cualquier dispositivo
-                        con plena validez legal.
-                    </div>
-                </div>
-                <!-- More items -->
-                <div class="glass-nav rounded-3xl p-8 border border-white/5 cursor-pointer group">
-                    <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-lg">¿Puedo retirar mi inversión antes de plazo?</h4>
-                        <span
-                            class="material-symbols-outlined text-[var(--primary)] group-hover:rotate-180 transition-transform">expand_more</span>
-                    </div>
-                    <div class="mt-4 text-slate-500 text-sm leading-relaxed hidden group-hover:block">
-                        El capital está vinculado a la fase de ejecución del proyecto. No obstante, estamos trabajando
-                        en un mercado secundario interno para facilitar la liquidez entre inversores.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    # Replace the entire <nav> block
+    # Matches from <nav ...> to </nav>
+    content = re.sub(
+        r'<nav.*?</nav>',
+        new_nav,
+        content,
+        flags=re.DOTALL
+    )
 
-    <!-- LEGAL DOCUMENTATION -->
-    <section class="py-32 bg-[var(--bg-dark)]">
-        <div class="container mx-auto px-8">
-            <div class="grid lg:grid-cols-2 gap-20">
-                <div>
-                    <h3 class="text-4xl font-editorial mb-10 italic">Documentación <span
-                            class="text-[var(--primary)] font-normal">Base.</span></h3>
-                    <div class="space-y-4">
-                        <div
-                            class="p-6 glass-nav rounded-2xl flex items-center justify-between border border-white/5 hover:border-[var(--primary)]/30 transition-all cursor-pointer">
-                            <span class="font-bold">Contrato de Inversión Modelo</span>
-                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">download</span>
-                        </div>
-                        <div
-                            class="p-6 glass-nav rounded-2xl flex items-center justify-between border border-white/5 hover:border-[var(--primary)]/30 transition-all cursor-pointer">
-                            <span class="font-bold">Política de Gestión de Riesgos</span>
-                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">download</span>
-                        </div>
-                        <div
-                            class="p-6 glass-nav rounded-2xl flex items-center justify-between border border-white/5 hover:border-[var(--primary)]/30 transition-all cursor-pointer">
-                            <span class="font-bold">Condiciones Generales de la Plataforma</span>
-                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">download</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-12 glass-nav rounded-[3rem] border border-white/10 relative overflow-hidden">
-                    <div class="h-20 w-20 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-8">
-                        <span class="material-symbols-outlined text-3xl text-[var(--primary)]">verified</span>
-                    </div>
-                    <h4 class="text-2xl font-editorial mb-4">Garantía Legislativa</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-8">Operamos bajo el marco regulatorio del Real
-                        Decreto-ley 5/2015 de fomento de la financiación empresarial, cumpliendo con todos los
-                        requisitos de transparencia y protección al inversor minorista.</p>
-                    <div class="flex gap-4">
-                        <div
-                            class="h-10 w-auto opacity-40 grayscale invert flex items-center px-4 bg-white/5 rounded-xl border border-white/10 text-[9px] font-black tracking-widest">
-                            RGPD COMPLIANT</div>
-                        <div
-                            class="h-10 w-auto opacity-40 grayscale invert flex items-center px-4 bg-white/5 rounded-xl border border-white/10 text-[9px] font-black tracking-widest">
-                            TLS 1.3 SECURE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    # Replace the entire mobile menu block
+    # Matches from <!-- Mobile Menu Overlay --> or <div id="mobile-menu" ...> to the closing </div> of that menu
+    # Using a more robust pattern for the mobile menu
+    content = re.sub(
+        r'(<!--\s*Mobile Menu Overlay\s*-->\s*)?<div id="mobile-menu".*?</div>\s*</div>\s*</div>\s*</div>',
+        new_mobile,
+        content,
+        flags=re.DOTALL
+    )
 
-    <!-- FOOTER -->
-    <footer
-        class="py-24 bg-surface border-t border-white/5 text-center text-slate-600 text-[10px] tracking-[0.2em] uppercase">
-        © 2026 Habitante. Centro Legal.
-    </footer>
+    with open(full_path, 'w', encoding='utf-8') as f:
+        f.write(content)
 
-</body>
-
-</html>
+print("Nav blocks replaced in all files.")

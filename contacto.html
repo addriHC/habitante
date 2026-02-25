@@ -18,18 +18,22 @@
 <body class="antialiased overflow-x-hidden">
 
     <!-- NAVIGATION (Matches Home) -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
-        <div class="glass-nav rounded-2xl px-8 py-4 flex items-center justify-between">
+        <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+        <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
+
             <div class="flex items-center">
                 <a href="index.html">
                     <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
-                        class="h-10 w-auto" />
+                        class="h-8 md:h-10 w-auto" />
                 </a>
             </div>
+
+            <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-8">
                 <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
                     href="index.html">Inicio</a>
 
+                <!-- Quiénes Somos Dropdown -->
                 <div class="relative group">
                     <button
                         class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
@@ -47,6 +51,7 @@
                     </div>
                 </div>
 
+                <!-- Proyectos Dropdown -->
                 <div class="relative group">
                     <button
                         class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
@@ -64,6 +69,7 @@
                     </div>
                 </div>
 
+                <!-- Inversión Dropdown -->
                 <div class="relative group">
                     <button
                         class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
@@ -78,29 +84,56 @@
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Iniciativas</a>
                     </div>
                 </div>
+
+                <!-- Plataforma Habitante Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Plataforma Habitante
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="plataforma.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso Clientes</a>
+                        <a href="contacto.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte Cliente</a>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="contacto.html"
-                    class="bg-[var(--primary)] text-white px-8 py-2.5 rounded-full text-sm font-bold tracking-tight hover:brightness-105 transition-all shadow-md">
-                    CONTACTO
-                </a>
-                <button id="mobile-menu-btn" class="lg:hidden text-white p-2"><span
-                        class="material-symbols-outlined">menu</span></button>
+
+            <div class="flex items-center gap-4 lg:gap-8">
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
         </div>
     </nav>
+        <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
+        <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
-        <div class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl">
+
+        <!-- Menu Panel -->
+        <div
+            class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl transform translate-x-0">
             <div class="flex flex-col h-full">
+                <!-- Header -->
                 <div class="flex items-center justify-between p-6 border-b border-white/10">
                     <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante" class="h-8">
-                    <button onclick="closeMobileMenu()" class="text-white p-2"><span
-                            class="material-symbols-outlined">close</span></button>
+                    <button onclick="closeMobileMenu()" class="text-white p-2">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
                 </div>
+
+                <!-- Menu Items -->
                 <div class="flex-1 overflow-y-auto p-6 space-y-2">
                     <a href="index.html"
-                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">Inicio</a>
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">
+                        Inicio
+                    </a>
+
+                    <!-- Quiénes Somos Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('quienes')"
                             class="w-full flex items-center justify-between py-3 text-sm font-medium">
@@ -116,6 +149,8 @@
                                 Grupo</a>
                         </div>
                     </div>
+
+                    <!-- Proyectos Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('proyectos')"
                             class="w-full flex items-center justify-between py-3 text-sm font-medium">
@@ -132,6 +167,8 @@
                                 Estudio</a>
                         </div>
                     </div>
+
+                    <!-- Inversión Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('inversion')"
                             class="w-full flex items-center justify-between py-3 text-sm font-medium">
@@ -146,10 +183,22 @@
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
                         </div>
                     </div>
-                </div>
-                <div class="p-6 border-t border-white/10">
-                    <a href="contacto.html"
-                        class="block w-full bg-[var(--primary)] text-black text-center py-3 rounded-xl font-bold text-sm">CONTACTO</a>
+
+                    <!-- Plataforma Habitante Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('plataforma')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Plataforma Habitante</span>
+                            <span id="plataforma-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="plataforma.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso Clientes</a>
+                            <a href="contacto.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -211,7 +260,7 @@
 
                     <!-- Contact Cards -->
                     <div class="space-y-4">
-                        <a href="https://wa.me/34865694481" target="_blank"
+                        <a href="https://wa.me/34699440308" target="_blank"
                             class="flex items-center gap-4 p-5 glass-nav rounded-2xl border border-white/5 hover:border-[var(--primary)]/50 transition-all group">
                             <span
                                 class="material-symbols-outlined text-2xl text-[var(--primary)] bg-[var(--primary)]/10 p-3 rounded-xl group-hover:bg-[var(--primary)] group-hover:text-black transition-all">chat</span>
@@ -223,13 +272,13 @@
                                 class="material-symbols-outlined text-slate-600 group-hover:text-[var(--primary)] transition-colors">arrow_forward</span>
                         </a>
 
-                        <a href="tel:+34865694481"
+                        <a href="tel:+34699440308"
                             class="flex items-center gap-4 p-5 glass-nav rounded-2xl border border-white/5 hover:border-[var(--primary)]/50 transition-all group">
                             <span
                                 class="material-symbols-outlined text-2xl text-[var(--primary)] bg-[var(--primary)]/10 p-3 rounded-xl group-hover:bg-[var(--primary)] group-hover:text-black transition-all">call</span>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg font-editorial">Teléfono</h4>
-                                <p class="text-xs text-slate-400 mt-1">+34 865 69 44 81</p>
+                                <p class="text-xs text-slate-400 mt-1">+34 699 440 308</p>
                             </div>
                             <span
                                 class="material-symbols-outlined text-slate-600 group-hover:text-[var(--primary)] transition-colors">arrow_forward</span>

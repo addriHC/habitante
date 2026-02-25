@@ -18,20 +18,25 @@
 <body class="antialiased overflow-x-hidden">
 
     <!-- NAVIGATION -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
-        <div class="glass-nav rounded-2xl px-8 py-4 flex items-center justify-between">
+        <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+        <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
+
             <div class="flex items-center">
                 <a href="index.html">
                     <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
-                        class="h-10 w-auto" />
+                        class="h-8 md:h-10 w-auto" />
                 </a>
             </div>
+
+            <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-8">
                 <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
                     href="index.html">Inicio</a>
 
+                <!-- Quiénes Somos Dropdown -->
                 <div class="relative group">
-                    <button class="text-sm font-medium text-[var(--primary)] transition-colors flex items-center gap-1">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
                         Quiénes Somos
                         <span class="material-symbols-outlined text-xs">expand_more</span>
                     </button>
@@ -41,11 +46,12 @@
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Quiénes
                             Somos</a>
                         <a href="sociedades.html"
-                            class="block px-6 py-3 text-sm text-[var(--primary)] transition-colors">Sociedades del
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Sociedades del
                             Grupo</a>
                     </div>
                 </div>
 
+                <!-- Proyectos Dropdown -->
                 <div class="relative group">
                     <button
                         class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
@@ -63,6 +69,7 @@
                     </div>
                 </div>
 
+                <!-- Inversión Dropdown -->
                 <div class="relative group">
                     <button
                         class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
@@ -77,14 +84,25 @@
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Iniciativas</a>
                     </div>
                 </div>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="contacto.html"
-                    class="bg-[var(--primary)] text-white px-8 py-2.5 rounded-full text-sm font-bold tracking-tight hover:brightness-105 transition-all shadow-md">
-                    CONTACTO
-                </a>
 
-                <!-- Mobile Menu Button -->
+                <!-- Plataforma Habitante Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Plataforma Habitante
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="plataforma.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso Clientes</a>
+                        <a href="contacto.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte Cliente</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 lg:gap-8">
                 <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -92,23 +110,34 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
+        <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
+        <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
-        <div class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl">
+
+        <!-- Menu Panel -->
+        <div
+            class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl transform translate-x-0">
             <div class="flex flex-col h-full">
+                <!-- Header -->
                 <div class="flex items-center justify-between p-6 border-b border-white/10">
                     <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante" class="h-8">
                     <button onclick="closeMobileMenu()" class="text-white p-2">
                         <span class="material-symbols-outlined">close</span>
                     </button>
                 </div>
+
+                <!-- Menu Items -->
                 <div class="flex-1 overflow-y-auto p-6 space-y-2">
                     <a href="index.html"
-                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">Inicio</a>
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">
+                        Inicio
+                    </a>
+
+                    <!-- Quiénes Somos Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('quienes')"
-                            class="w-full flex items-center justify-between py-3 text-sm font-medium text-[var(--primary)]">
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
                             <span>Quiénes Somos</span>
                             <span id="quienes-icon"
                                 class="material-symbols-outlined text-sm transition-transform">expand_more</span>
@@ -121,6 +150,8 @@
                                 Grupo</a>
                         </div>
                     </div>
+
+                    <!-- Proyectos Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('proyectos')"
                             class="w-full flex items-center justify-between py-3 text-sm font-medium">
@@ -137,6 +168,8 @@
                                 Estudio</a>
                         </div>
                     </div>
+
+                    <!-- Inversión Mobile Dropdown -->
                     <div class="border-b border-white/5">
                         <button onclick="toggleMobileDropdown('inversion')"
                             class="w-full flex items-center justify-between py-3 text-sm font-medium">
@@ -151,10 +184,22 @@
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
                         </div>
                     </div>
-                </div>
-                <div class="p-6 border-t border-white/10">
-                    <a href="contacto.html"
-                        class="block w-full bg-[var(--primary)] text-black text-center py-3 rounded-xl font-bold text-sm">CONTACTO</a>
+
+                    <!-- Plataforma Habitante Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('plataforma')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Plataforma Habitante</span>
+                            <span id="plataforma-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="plataforma.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso Clientes</a>
+                            <a href="contacto.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -214,185 +259,366 @@
         </div>
         <div class="container mx-auto px-8 relative z-20 text-center">
             <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-6">
-                Ecosistema Empresarial
+                Estructura Corporativa
             </p>
             <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1] font-editorial font-bold mb-12 text-gradient">
                 Sociedades del<br />
                 <span class="italic font-normal">Grupo</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed">
-                Un ecosistema integrado de empresas especializadas trabajando en sinergia para revolucionar el sector
+                Una red integrada de empresas especializadas trabajando en sinergia para revolucionar el sector
                 inmobiliario.
             </p>
         </div>
     </header>
 
-    <!-- SOCIEDADES SECTION -->
-    <section class="py-32 bg-surface">
-        <div class="container mx-auto px-8">
-            <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                <!-- Habitante Assets -->
+
+
+    <!-- SPECIFIC SOCIETIES GRID -->
+    <section class="py-24 bg-[var(--bg-dark)] relative overflow-hidden border-t border-white/5">
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="text-center mb-20">
+                <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-4">Estructura
+                    Corporativa</p>
+                <h2 class="text-3xl md:text-5xl font-editorial font-bold text-gradient mb-6">Empresas del Grupo</h2>
+                <div class="w-20 h-1 bg-[var(--primary)] mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                <!-- 01: Edificatucasa, S.L. (EDI) -->
                 <div
-                    class="relative glass-nav p-10 rounded-[3rem] border border-white/5 hover:border-[var(--primary)]/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[var(--primary)]/10 group overflow-hidden">
-                    <!-- Glow effect on hover -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/dh2mFDvb/Logo-EDI-(Habitante).png" alt="Edificatucasa"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
                     </div>
-
-                    <div class="relative z-10">
-                        <div
-                            class="h-24 w-24 rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 to-[var(--primary)]/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto shadow-lg">
-                            <span
-                                class="material-symbols-outlined text-5xl text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">apartment</span>
-                        </div>
-                        <h3
-                            class="text-3xl font-editorial mb-3 font-bold text-center group-hover:text-[var(--primary)] transition-colors duration-300">
-                            Habitante Assets</h3>
-                        <p class="text-sm text-slate-400 leading-relaxed text-center mb-8 min-h-[60px]">Gestión
-                            patrimonial y
-                            selección de activos estratégicos.</p>
-
-                        <div class="space-y-4 text-sm text-slate-300">
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Análisis y due diligence de activos inmobiliarios</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Gestión de portfolio y optimización de rentabilidad</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Estrategias de adquisición y desinversión</p>
-                            </div>
-                        </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-[var(--primary)] font-bold tracking-widest uppercase mb-2">Matriz</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Edificatucasa, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria y
+                            Consultoría AECO</p>
                     </div>
                 </div>
 
-                <!-- Habitante Tech -->
+                <!-- 02: Resort Asistencial SV, S.L. (RSV) -->
                 <div
-                    class="relative glass-nav p-10 rounded-[3rem] border border-white/5 hover:border-[var(--primary)]/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[var(--primary)]/10 group overflow-hidden">
-                    <!-- Glow effect on hover -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/w1Xcz3HS/Logo-RSV.png" alt="Resort Asistencial SV"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
                     </div>
-
-                    <div class="relative z-10">
-                        <div
-                            class="h-24 w-24 rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 to-[var(--primary)]/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto shadow-lg">
-                            <span
-                                class="material-symbols-outlined text-5xl text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">precision_manufacturing</span>
-                        </div>
-                        <h3
-                            class="text-3xl font-editorial mb-3 font-bold text-center group-hover:text-[var(--primary)] transition-colors duration-300">
-                            Habitante Tech</h3>
-                        <p class="text-sm text-slate-400 leading-relaxed text-center mb-8 min-h-[60px]">Ingeniería BIM
-                            10D y
-                            desarrollo de gemelos digitales.</p>
-
-                        <div class="space-y-4 text-sm text-slate-300">
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Modelado BIM 10D para proyectos complejos</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Gemelos digitales y simulación de costes</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Optimización de procesos constructivos</p>
-                            </div>
-                        </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Resort Asistencial SV, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria y
+                            Explotación Asistencial</p>
                     </div>
                 </div>
 
-                <!-- Habitante Capital -->
+                <!-- 03: Promotora BIM 10D, S.L. (B10) -->
                 <div
-                    class="relative glass-nav p-10 rounded-[3rem] border border-white/5 hover:border-[var(--primary)]/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-[var(--primary)]/10 group overflow-hidden">
-                    <!-- Glow effect on hover -->
-                    <div
-                        class="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/PCWzHNhc/Logo-B10.png" alt="Promotora BIM 10D"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
                     </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Promotora BIM 10D, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
 
-                    <div class="relative z-10">
-                        <div
-                            class="h-24 w-24 rounded-3xl bg-gradient-to-br from-[var(--primary)]/20 to-[var(--primary)]/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto shadow-lg">
-                            <span
-                                class="material-symbols-outlined text-5xl text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">account_balance</span>
-                        </div>
-                        <h3
-                            class="text-3xl font-editorial mb-3 font-bold text-center group-hover:text-[var(--primary)] transition-colors duration-300">
-                            Habitante Capital</h3>
-                        <p class="text-sm text-slate-400 leading-relaxed text-center mb-8 min-h-[60px]">Vehículo de
-                            inversión y
-                            fintech para crowdfunding.</p>
+                <!-- 04: Residencial Santa Maria de Gracia, S.L. (SMG) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/sMY9z1y0/Logo-SMG.png" alt="Residencial SMG"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Residencial Santa Maria de Gracia, S.L.
+                        </h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
 
-                        <div class="space-y-4 text-sm text-slate-300">
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Plataforma de crowdfunding inmobiliario</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Estructuras de inversión para grandes capitales</p>
-                            </div>
-                            <div
-                                class="flex items-start gap-4 group/item hover:translate-x-1 transition-transform duration-300">
-                                <div
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover/item:bg-[var(--primary)]/20 transition-colors">
-                                    <span
-                                        class="material-symbols-outlined text-[var(--primary)] text-base">check_circle</span>
-                                </div>
-                                <p class="leading-relaxed">Reporting digital y transparencia total</p>
-                            </div>
-                        </div>
+                <!-- 05: Residencial Fernán Caballero, S.L. (RFC) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/sMY9z1yH/Logo-RFC.png" alt="Residencial RFC"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Residencial Fernán Caballero, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
+
+                <!-- 06: Residencial Avenida de Andalucia, S.L. (RAA) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6 scale-90">
+                        <img src="https://i.postimg.cc/3k5Cz255/Logo-RAA.png" alt="Residencial RAA"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Residencial Avenida de Andalucia, S.L.
+                        </h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
+
+                <!-- 07: Residencial Marbesa, S.L. (MAR) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6 scale-90">
+                        <img src="https://i.postimg.cc/hXWbNVWF/Logo-MAR.png" alt="Residencial MAR"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Residencial Marbesa, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
+
+                <!-- 08: Residencial San Jerónimo Sevilla, S.L. (RSJ) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6 scale-90">
+                        <img src="https://i.postimg.cc/NKq7ZRhn/Logo-RSJ.png" alt="Residencial RSJ"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Residencial San Jerónimo Sevilla, S.L.
+                        </h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Promoción Inmobiliaria</p>
+                    </div>
+                </div>
+
+                <!-- 09: Grupo Habitante AECO, S.L. (GHA) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/ZWtFX6kD/Logo-GHA.png" alt="Grupo Habitante AECO"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Grupo Habitante AECO, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Consultoría AECO</p>
+                    </div>
+                </div>
+
+                <!-- 10: Gestiones de obra y Construcciones Habitante, S.L. (CHA) -->
+                <div
+                    class="glass-nav rounded-3xl p-8 flex flex-col items-center justify-between border border-white/5 hover:border-[var(--primary)]/40 transition-all duration-500 group">
+                    <div class="w-full aspect-square flex items-center justify-center mb-6">
+                        <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Gestiones de obra"
+                            class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500 brightness-150">
+                    </div>
+                    <div class="text-center flex-1 flex flex-col justify-end">
+                        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mb-2">Participada</p>
+                        <h4 class="text-xs font-bold text-white leading-tight">Gestiones de obra y Construcciones
+                            Habitante, S.L.</h4>
+                        <p class="text-[9px] text-slate-500 mt-2 uppercase tracking-tight">Construcciones y Gestiones de
+                            Obra</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    </div>
+
+    <!-- DETAILED STRUCTURE TABLE -->
+    <section class="py-24 bg-surface relative overflow-hidden">
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h3 class="text-2xl md:text-4xl font-editorial font-bold italic mb-6 text-gradient">Detalle de <span
+                        class="text-[var(--primary)] font-normal">Consolidación</span></h3>
+                <p class="text-slate-400 text-sm max-w-2xl mx-auto">Información técnica y financiera de las sociedades
+                    que integran el ecosistema Habitante.</p>
+            </div>
+
+            <div class="max-w-7xl mx-auto overflow-x-auto">
+                <div class="glass-nav rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl">
+                    <table class="w-full text-left text-[11px]">
+                        <thead class="bg-white/5 border-b border-white/10 uppercase tracking-[0.15em] text-slate-500">
+                            <tr>
+                                <th class="px-8 py-6 font-black">Sociedad</th>
+                                <th class="px-8 py-6 font-black">Actividad</th>
+                                <th class="px-8 py-6 font-black text-center">NIF</th>
+                                <th class="px-8 py-6 font-black text-center">Participación</th>
+                                <th class="px-8 py-6 font-black text-right">Capital Social (€)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5 text-slate-400">
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-2 h-2 rounded-full bg-[var(--primary)] shadow-[0_0_10px_var(--primary)]">
+                                        </div>
+                                        <span
+                                            class="font-bold text-white group-hover:text-[var(--primary)] transition-colors">EDIFICATUCASA,
+                                            S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria y Consultoría AECO</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B42731885</td>
+                                <td class="px-8 py-5 text-center font-bold text-white">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono text-slate-300">43.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESORT
+                                            ASISTENCIAL SV, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria y Explotación Asistencial</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B72946726</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">77,5%</td>
+                                <td class="px-8 py-5 text-right font-mono">40.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">PROMOTORA
+                                            BIM 10D, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B44921377</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">37,5%</td>
+                                <td class="px-8 py-5 text-right font-mono">200.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESIDENCIAL
+                                            SANTA MARIA DE GRACIA, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B13729934</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">27,3%</td>
+                                <td class="px-8 py-5 text-right font-mono">275.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESIDENCIAL
+                                            FERNÁN CABALLERO, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B55418826</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">37,5%</td>
+                                <td class="px-8 py-5 text-right font-mono">200.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESIDENCIAL
+                                            AVENIDA DE ANDALUCIA, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B75575365</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono">230.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESIDENCIAL
+                                            MARBESA, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B23964117</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono">1.000.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">RESIDENCIAL
+                                            SAN JERÓNIMO SEVILLA, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Promoción Inmobiliaria</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">B23963903</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono">1.000.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">GRUPO
+                                            HABITANTE AECO, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Consultoría AECO</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">-</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono">100.000 €</td>
+                            </tr>
+                            <tr class="hover:bg-white/[0.03] transition-colors group">
+                                <td class="px-8 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                                        <span
+                                            class="font-bold text-white/90 group-hover:text-[var(--primary)] transition-colors">GESTIONES
+                                            DE OBRA Y CONSTRUCCIONES HABITANTE, S.L.</span>
+                                    </div>
+                                </td>
+                                <td class="px-8 py-5">Construcciones y Gestiones de Obra</td>
+                                <td class="px-8 py-5 text-center font-mono opacity-60">-</td>
+                                <td class="px-8 py-5 text-center font-bold text-white/70">100,0%</td>
+                                <td class="px-8 py-5 text-right font-mono">100.000 €</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-white/5 border-t border-white/10">
+                            <tr class="text-white">
+                                <td colspan="4"
+                                    class="px-8 py-6 text-right uppercase tracking-[0.2em] text-[10px] font-black opacity-50">
+                                    Capital Social Total del Grupo</td>
+                                <td class="px-8 py-6 text-right text-xl font-bold font-mono text-[var(--primary)]">
+                                    3.188.000 €</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div
+                    class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+                    <p>* Datos auditados a noviembre de 2025.</p>
+                    <p>(1) Incluyendo participación de los socios de Edificatucasa.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -456,13 +682,6 @@
             <div
                 class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] text-slate-600 uppercase tracking-[0.2em]">
                 <p>© 2026 Habitante. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-6">
-                    <span class="text-slate-700">CNMV Registro Nº 4</span>
-                    <div class="flex gap-4">
-                        <a href="#" class="hover:text-white transition-colors">Linkedin</a>
-                        <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>
