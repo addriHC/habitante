@@ -246,7 +246,7 @@
                     if (video) {
                         video.muted = true;
                         var playPromise = video.play();
-                        video.playbackRate = 0.3;
+                        video.playbackRate = 1.0;
                         if (playPromise !== undefined) {
                             playPromise.catch(function (error) {
                                 document.body.addEventListener('touchstart', function () { video.play(); }, { once: true });
