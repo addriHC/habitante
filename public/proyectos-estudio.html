@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Proyectos en Estudio | Habitante</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/MKncLryk/habitantelogo2.png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+        <div class="glass-nav rounded-2xl px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
+                        class="h-10 w-auto" />
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="index.html">Inicio</a>
+
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Quiénes Somos
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="quienes-somos.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Quiénes
+                            Somos</a>
+                        <a href="sociedades.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Sociedades del
+                            Grupo</a>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="text-sm font-medium text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Proyectos
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="marketplace.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Promociones
+                            en Curso</a>
+                        <a href="proyectos-estudio.html"
+                            class="block px-6 py-3 text-sm text-[var(--primary)] transition-colors">Proyectos en
+                            Estudio</a>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Inversión
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="inversores.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Crowdfunding</a>
+                        <a href="iniciativas.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Iniciativas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="contacto.html"
+                    class="bg-[var(--primary)] text-white px-8 py-2.5 rounded-full text-sm font-bold tracking-tight hover:brightness-105 transition-all shadow-md">
+                    CONTACTO
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2"><span
+                        class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
+        <div class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-6 border-b border-white/10">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante" class="h-8">
+                    <button onclick="closeMobileMenu()" class="text-white p-2"><span
+                            class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-6 space-y-2">
+                    <a href="index.html"
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">Inicio</a>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('quienes')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Quiénes Somos</span>
+                            <span id="quienes-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="quienes-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="quienes-somos.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Quiénes Somos</a>
+                            <a href="sociedades.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Sociedades del
+                                Grupo</a>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('proyectos')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium text-[var(--primary)]">
+                            <span>Proyectos</span>
+                            <span id="proyectos-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="proyectos-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="marketplace.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Promociones en
+                                Curso</a>
+                            <a href="proyectos-estudio.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Proyectos en
+                                Estudio</a>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('inversion')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Inversión</span>
+                            <span id="inversion-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="inversion-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="inversores.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Crowdfunding</a>
+                            <a href="iniciativas.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-white/10">
+                    <a href="contacto.html"
+                        class="block w-full bg-[var(--primary)] text-black text-center py-3 rounded-xl font-bold text-sm">CONTACTO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+        function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
+    </script>
+
+    <!-- HEADER / FILTERS -->
+    <header class="relative pt-48 pb-20 overflow-hidden bg-[var(--bg-dark)]">
+        <div class="absolute inset-0 z-0">
+            <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny"
+                preload="auto" disableRemotePlayback class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="https://blueways.es/5829169-uhd_3840_2160_24fps.mp4" type="video/mp4">
+            </video>
+
+            <div class="video-overlay"></div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var video = document.getElementById('heroVideo');
+                    if (video) {
+                        video.muted = true;
+                        var playPromise = video.play();
+                        video.playbackRate = 0.6;
+                        if (playPromise !== undefined) {
+                            playPromise.catch(function (error) {
+                                document.body.addEventListener('touchstart', function () { video.play(); }, { once: true });
+                                document.body.addEventListener('click', function () { video.play(); }, { once: true });
+                            });
+                        }
+                    }
+                });
+            </script>
+            <div class="video-overlay"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)] via-[var(--bg-dark)]/70 to-transparent z-10 pointer-events-none">
+            </div>
+        </div>
+        <div class="container mx-auto px-8 relative z-20">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
+                <div class="max-w-2xl">
+                    <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-6">Pipeline de
+                        Desarrollo</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-editorial font-bold mb-8 italic">
+                        Proyectos en <br /><span class="text-[var(--primary)] font-normal">Estudio</span>
+                    </h1>
+                    <p class="text-xl text-slate-400 font-light leading-relaxed">
+                        Oportunidades en fase de análisis y desarrollo. Proyectos estratégicos evaluados mediante BIM
+                        10D antes de su lanzamiento oficial.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FILTERS BAR -->
+            <div class="glass-nav rounded-[2.5rem] p-4 flex flex-wrap items-center gap-4 border border-white/10">
+                <div class="flex-1 min-w-[200px] relative">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+                    <input type="text" placeholder="Buscar ubicación..."
+                        class="w-full bg-white/5 border-none rounded-2xl pl-12 pr-4 py-4 text-sm text-white focus:ring-1 focus:ring-[var(--primary)] outline-none">
+                </div>
+                <select
+                    class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm text-white focus:ring-1 focus:ring-[var(--primary)] outline-none min-w-[150px]">
+                    <option>Tipo de Activo</option>
+                    <option>Residencial</option>
+                    <option>Comercial</option>
+                    <option>Mixto</option>
+                </select>
+                <select
+                    class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm text-white focus:ring-1 focus:ring-[var(--primary)] outline-none min-w-[150px]">
+                    <option>Fase</option>
+                    <option>Análisis inicial</option>
+                    <option>Due diligence</option>
+                    <option>Modelado BIM</option>
+                </select>
+                <button
+                    class="bg-[var(--primary)] text-black px-10 py-4 rounded-2xl font-bold text-sm hover:brightness-110 transition-all">Filtrar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROJECTS LIST -->
+    <section class="py-20 bg-surface">
+        <div class="container mx-auto px-8">
+            <div id="estudio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="col-span-full py-20 text-center text-slate-500">Cargando proyectos en estudio...</div>
+            </div>
+
+        <!-- Info Banner -->
+        <div class="mt-20 p-12 glass-nav rounded-[3rem] border border-white/10 text-center max-w-4xl mx-auto">
+            <span class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6 block">info</span>
+            <h3 class="text-2xl font-editorial mb-4 italic">Acceso <span class="text-[var(--primary)]">Anticipado</span>
+            </h3>
+            <p class="text-slate-400 leading-relaxed mb-8 max-w-2xl mx-auto">
+                Registra tu interés en proyectos en fase de estudio y obtén acceso prioritario cuando pasen a fase
+                de inversión. Información detallada y análisis BIM disponibles bajo NDA.
+            </p>
+            <a href="contacto.html"
+                class="inline-block bg-[var(--primary)] text-black px-10 py-4 rounded-2xl font-bold text-sm hover:brightness-110 transition-all uppercase tracking-tight">
+                Solicitar Acceso
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-24 bg-surface border-t border-white/5">
+        </div>
+    </footer>
+
+    <!-- Dynamic Content Scripts -->
+    <script>
+        window.NEXT_PUBLIC_SUPABASE_URL = "https://horwfadbwfgoxxxmhprk.supabase.co";
+        window.NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_w175qXvcWBCqliSK99B6kQ_5LYY1AGU";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="ui-components.js"></script>
+    <script src="proyectos-estudio.js"></script>
+
+</body>
+
+</html>

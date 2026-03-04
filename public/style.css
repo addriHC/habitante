@@ -1,0 +1,154 @@
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 2rem));
+    }
+}
+
+.partners-carousel {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.partners-carousel:hover {
+    animation-play-state: paused;
+}
+
+.carousel-mask {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+:root {
+    --primary: #76e474;
+    --accent: #8df08b;
+    --bg-dark: #050505;
+    --surface: #0A0A0A;
+}
+
+.img-contained {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+body {
+    font-family: 'Arboria', 'Archivo', sans-serif;
+    background-color: var(--bg-dark);
+    color: #E2E8F0;
+}
+
+/* Keep Plus Jakarta Sans only for navigation menu */
+nav,
+nav *,
+.glass-nav {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Explicit Arboria/Archivo for editorial content (titles, headers) */
+.font-editorial {
+    font-family: 'Arboria', 'Archivo', sans-serif;
+}
+
+
+
+.glass-nav {
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.card-zoom:hover img {
+    transform: scale(1.08);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glow-conversion {
+    background: radial-gradient(circle at top right, rgba(118, 228, 116, 0.15), transparent 60%),
+        radial-gradient(circle at bottom left, rgba(118, 228, 116, 0.05), transparent 40%);
+}
+
+.hover-reveal-data .data-overlay {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-reveal-data:hover .data-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.chat-tooltip {
+    animation: slideIn 0.5s ease-out forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+
+
+
+/* Video overlay to block all interactions */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    /* Increased z-index */
+    pointer-events: auto;
+    background: transparent;
+}
+
+/* Utility to hide video until playing */
+.video-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.video-visible {
+    opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
