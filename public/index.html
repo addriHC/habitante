@@ -87,15 +87,27 @@
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Iniciativas</a>
                     </div>
                 </div>
+
+                <!-- Plataforma Habitante Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Plataforma Habitante
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="plataforma.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso
+                            Clientes</a>
+                        <a href="contacto.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte
+                            Cliente</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex items-center gap-2 md:gap-4">
-                <a href="contacto.html"
-                    class="bg-[var(--primary)] text-white px-4 md:px-8 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold tracking-tight hover:brightness-105 transition-all duration-300 shadow-md">
-                    CONTACTO
-                </a>
-
-                <!-- Mobile Menu Button -->
+            <div class="flex items-center gap-4 lg:gap-8">
                 <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -123,7 +135,7 @@
                 <!-- Menu Items -->
                 <div class="flex-1 overflow-y-auto p-6 space-y-2">
                     <a href="index.html"
-                        class="block py-3 text-sm font-medium text-[var(--primary)] border-b border-white/5">
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">
                         Inicio
                     </a>
 
@@ -175,6 +187,23 @@
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Crowdfunding</a>
                             <a href="iniciativas.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
+                        </div>
+                    </div>
+
+                    <!-- Plataforma Habitante Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('plataforma')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Plataforma Habitante</span>
+                            <span id="plataforma-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="plataforma.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso
+                                Clientes</a>
+                            <a href="contacto.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
                         </div>
                     </div>
                 </div>
@@ -234,7 +263,7 @@
                     if (video) {
                         video.muted = true;
                         var playPromise = video.play();
-                        video.playbackRate = 0.6;
+                        video.playbackRate = 0.3;
                         if (playPromise !== undefined) {
                             playPromise.catch(function (error) {
                                 // Auto-play was prevented, try again on user interaction
@@ -314,16 +343,15 @@
     <section class="py-16 md:py-32 relative overflow-hidden bg-surface">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
-                <div class="relative group">
+                <div class="relative group max-w-lg mx-auto w-full">
                     <div class="absolute -inset-4 bg-[var(--primary)]/10 blur-3xl rounded-full"></div>
                     <div class="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img alt="Dashboard Mockup" class="w-full aspect-[4/5] object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDMsHOLEvY37PlBd-dzKDFASMQvBY_R404gIGW9rt-YQrdXVmBxSysKB0Z_507868xk1Ns-ubgi0iDe8xMETKpUWsBlamMgu4Ct8rBbHSokVnbkuU2Ka3qoBqtjPgC2SXZiGbdav1bgrJTXyKuvLnbEglFL1WqRjPCnerPglXx_sbOzaycGDxh8Xb5v8fM1CKk5Sz3PAVlxIKuYX2-XFwBbCS_5wak016YuUhcxGrCi55en7ZWLwje2FaFb86r3EgjY48fV36ozZo" />
+                        <img alt="Building" class="w-full aspect-[4/5] object-cover" src="building_moody_dark.png" />
                         <div class="absolute bottom-0 left-0 right-0 p-4 md:p-8 glass-nav border-none">
                             <div class="flex justify-between items-end">
                                 <div>
                                     <p class="text-[10px] md:text-xs text-white/60 mb-1">Estado del proyecto</p>
-                                    <h4 class="text-xl md:text-3xl font-bold">Seguimiento digital</h4>
+                                    <h4 class="text-xl md:text-3xl font-editorial font-bold">Seguimiento digital</h4>
                                 </div>
                                 <div class="text-right">
                                     <span class="text-sm md:text-base text-[var(--primary)] font-bold">BIM 10D</span>
@@ -334,19 +362,20 @@
                     </div>
                 </div>
                 <div class="space-y-4 sm:space-y-6 md:space-y-8">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-editorial leading-tight">
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-editorial font-bold leading-tight text-gradient">
                         Claridad total, de <span class="text-[var(--primary)] italic">principio</span> a fin.</h2>
                     <p class="text-sm sm:text-base md:text-lg lg:text-xl text-slate-400 font-light leading-relaxed">
                         Construirse una casa no es fácil. Por eso digitalizamos el proceso para darte tranquilidad:
                         comparas opciones, visualizas tu vivienda y avanzas con un equipo profesional que te acompaña
-                        hasta la llave en mano.
+                        hasta la llave en mano y el posterior mantenimiento.
                     </p>
                     <ul class="space-y-4 sm:space-y-6">
                         <li class="flex items-start gap-3 sm:gap-4">
                             <span
                                 class="material-symbols-outlined text-[var(--primary)] bg-[var(--primary)]/10 p-2 rounded-lg text-xl sm:text-2xl flex-shrink-0">verified_user</span>
                             <div>
-                                <h4 class="font-bold text-base sm:text-lg mb-1">Calidad y confianza</h4>
+                                <h4 class="font-editorial font-bold text-base sm:text-lg mb-1">Calidad y confianza</h4>
                                 <p class="text-slate-500 text-sm sm:text-base leading-relaxed">Documentación técnica,
                                     permisos y trazabilidad para
                                     que tomes decisiones con seguridad.</p>
@@ -356,7 +385,8 @@
                             <span
                                 class="material-symbols-outlined text-[var(--primary)] bg-[var(--primary)]/10 p-2 rounded-lg text-xl sm:text-2xl flex-shrink-0">analytics</span>
                             <div>
-                                <h4 class="font-bold text-base sm:text-lg mb-1">Costes y financiación</h4>
+                                <h4 class="font-editorial font-bold text-base sm:text-lg mb-1">Costes y financiación
+                                </h4>
                                 <p class="text-slate-500 text-sm sm:text-base leading-relaxed">Mediciones, presupuestos
                                     y estudios de financiación
                                     para que el proyecto sea claro desde el minuto uno.</p>
@@ -510,19 +540,8 @@
             <div
                 class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] text-slate-600 uppercase tracking-[0.2em]">
                 <p>© 2026 Habitante. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-6">
-                    <span class="text-slate-700">CNMV Registro Nº 4</span>
-                    <div class="flex gap-4">
-                        <a href="#" class="hover:text-white transition-colors">Linkedin</a>
-                        <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                    </div>
-                </div>
             </div>
         </div>
-    </footer>
-
-
-
     </footer>
 
     <!-- CONTACT MODAL -->
@@ -604,7 +623,7 @@
                     indícanos quién eres.</p>
 
                 <form class="space-y-4"
-                    onsubmit="window.open('https://wa.me/34865694481?text=Hola, soy ' + this.name.value + ' (' + this.email.value + '). Tengo una consulta sobre: ' + this.reason.value); return false;">
+                    onsubmit="window.open('https://wa.me/34699440308?text=Hola, soy ' + this.name.value + ' (' + this.email.value + '). Tengo una consulta sobre: ' + this.reason.value); return false;">
 
                     <div class="space-y-1">
                         <input type="text" name="name" placeholder="Nombre completo" required
