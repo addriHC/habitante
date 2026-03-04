@@ -1,0 +1,28 @@
+{
+  "name": "habitante-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "backoffice:dev": "vite --config backoffice/vite.config.js",
+    "backoffice:build": "vite build --config backoffice/vite.config.js",
+    "backoffice:preview": "vite preview --config backoffice/vite.config.js"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.97.0",
+    "leaflet": "^1.9.4",
+    "leaflet-omnivore": "^0.3.4",
+    "next": "^16.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.0",
+    "vite": "^7.2.0"
+  }
+}

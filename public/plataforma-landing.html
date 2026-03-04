@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Plataforma | Habitante | Ecosistema de Gestión</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/MKncLryk/habitantelogo2.png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION (Matches Home) -->
+    <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+        <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
+
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
+                        class="h-8 md:h-10 w-auto" />
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-[var(--primary)] transition-colors"
+                    href="index.html">Inicio</a>
+
+                <!-- Quiénes Somos Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Quiénes Somos
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="quienes-somos.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Quiénes
+                            Somos</a>
+                        <a href="sociedades.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Sociedades del
+                            Grupo</a>
+                    </div>
+                </div>
+
+                <!-- Proyectos Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Proyectos
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="marketplace.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Promociones
+                            en Curso</a>
+                        <a href="proyectos-estudio.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Proyectos en
+                            Estudio</a>
+                    </div>
+                </div>
+
+                <!-- Inversión Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Inversión
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="inversores.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Crowdfunding</a>
+                        <a href="iniciativas.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Iniciativas</a>
+                    </div>
+                </div>
+
+                <!-- Plataforma Habitante Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="text-sm font-medium hover:text-[var(--primary)] transition-colors flex items-center gap-1">
+                        Plataforma Habitante
+                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                        <a href="plataforma.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso
+                            Clientes</a>
+                        <a href="contacto.html"
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte
+                            Cliente</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 lg:gap-8">
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
+
+        <!-- Menu Panel -->
+        <div
+            class="absolute right-0 top-0 h-full w-[85%] max-w-sm glass-nav border-l border-white/10 shadow-2xl transform translate-x-0">
+            <div class="flex flex-col h-full">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-6 border-b border-white/10">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante" class="h-8">
+                    <button onclick="closeMobileMenu()" class="text-white p-2">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="flex-1 overflow-y-auto p-6 space-y-2">
+                    <a href="index.html"
+                        class="block py-3 text-sm font-medium hover:text-[var(--primary)] border-b border-white/5">
+                        Inicio
+                    </a>
+
+                    <!-- Quiénes Somos Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('quienes')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Quiénes Somos</span>
+                            <span id="quienes-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="quienes-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="quienes-somos.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Quiénes Somos</a>
+                            <a href="sociedades.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Sociedades del
+                                Grupo</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyectos Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('proyectos')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Proyectos</span>
+                            <span id="proyectos-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="proyectos-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="marketplace.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Promociones en
+                                Curso</a>
+                            <a href="proyectos-estudio.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Proyectos en
+                                Estudio</a>
+                        </div>
+                    </div>
+
+                    <!-- Inversión Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('inversion')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Inversión</span>
+                            <span id="inversion-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="inversion-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="inversores.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Crowdfunding</a>
+                            <a href="iniciativas.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Iniciativas</a>
+                        </div>
+                    </div>
+
+                    <!-- Plataforma Habitante Mobile Dropdown -->
+                    <div class="border-b border-white/5">
+                        <button onclick="toggleMobileDropdown('plataforma')"
+                            class="w-full flex items-center justify-between py-3 text-sm font-medium">
+                            <span>Plataforma Habitante</span>
+                            <span id="plataforma-icon"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+                        <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
+                            <a href="plataforma.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso
+                                Clientes</a>
+                            <a href="contacto.html"
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+        function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
+    </script>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-48 pb-32 overflow-hidden bg-[var(--bg-dark)]">
+        <div class="container mx-auto px-8 relative z-20 text-center max-w-4xl">
+            <h1 class="text-6xl md:text-8xl leading-[0.9] font-editorial font-bold mb-10 text-gradient">
+                Tu patrimonio,<br />
+                <span class="italic font-normal">bajo control</span> digital.
+            </h1>
+            <p class="text-xl text-slate-400 font-light mx-auto leading-relaxed mb-12">
+                Nuestra plataforma centraliza la gestión de tus proyectos, inversiones y documentación legal en un
+                entorno seguro y transparente.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#"
+                    class="bg-[var(--primary)] text-black px-12 py-5 rounded-full font-bold text-lg hover:brightness-110 transition-all shadow-xl">
+                    Acceder a Plataforma
+                </a>
+                <a href="#demo"
+                    class="glass-nav text-white px-12 py-5 rounded-full font-bold text-lg border border-white/20 hover:bg-white/5 transition-all">
+                    Solicitar Demo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="py-32 bg-surface">
+        <div class="container mx-auto px-8">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span
+                        class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">dashboard_customize</span>
+                    <h3 class="text-2xl font-editorial mb-4">Gestión de Proyectos</h3>
+                    <p class="text-sm text-slate-500">Visualiza el avance real de tus promociones con integración
+                        directa de gemelos digitales BIM 10D.</p>
+                </div>
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span
+                        class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">account_balance_wallet</span>
+                    <h3 class="text-2xl font-editorial mb-4">Seguimiento de Inversiones</h3>
+                    <p class="text-sm text-slate-500">Monitorea tus rentabilidades, dividendos y movimientos financieros
+                        en tiempo real con trazabilidad total.</p>
+                </div>
+                <div class="p-10 glass-nav rounded-[2.5rem] border border-white/5 text-center">
+                    <span class="material-symbols-outlined text-5xl text-[var(--primary)] mb-6">folder_managed</span>
+                    <h3 class="text-2xl font-editorial mb-4">Documentación Legal</h3>
+                    <p class="text-sm text-slate-500">Archivo digital seguro con todos tus contratos firmados,
+                        certificados de inversión y reportes técnicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 md:py-24 bg-surface border-t border-white/5">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
+
+                <div class="md:col-span-2 space-y-8">
+                    <img src="https://i.postimg.cc/MKncLryk/habitantelogo2.png" alt="Habitante Logo"
+                        class="h-10 w-auto" />
+                    <p class="text-slate-500 max-w-sm leading-relaxed text-sm">
+                        Promoción inmobiliaria con una capa digital real: calidad, innovación y personalización para
+                        crear hogares a la altura de tu visión.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Plataforma</h5>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="index.html">Inicio</a></li>
+                        <li><a class="hover:text-[var(--primary)] transition-colors"
+                                href="inversores.html">Inversores</a></li>
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="quienes-somos.html">Quiénes
+                                somos</a></li>
+                        <li><a class="hover:text-[var(--primary)] transition-colors"
+                                href="marketplace.html">Marketplace</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Contacto</h5>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">location_on</span>
+                            <span>Sevilla, España</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">phone</span>
+                            <a class="hover:text-white transition-colors" href="tel:+34699440308">+34 699 440 308</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm text-[var(--primary)]">mail</span>
+                            <a class="hover:text-white transition-colors" href="#">Escríbenos</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Newsletter</h5>
+                    <p class="text-xs text-slate-500 mb-4 lh-relaxed">Recibe oportunidades exclusivas de inversión cada
+                        mes.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Tu email..."
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-[var(--primary)] outline-none transition-all">
+                        <button
+                            class="w-full bg-white text-black py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-[var(--primary)] hover:text-white transition-all">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] text-slate-600 uppercase tracking-[0.2em]">
+                <p>© 2026 Habitante. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CONTACT MODAL -->
+    <div id="contact-modal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md"
+            onclick="document.getElementById('contact-modal').classList.add('hidden')"></div>
+        <div class="relative glass-nav w-full max-w-xl rounded-[3rem] p-12 border border-white/10 overflow-hidden">
+            <button onclick="document.getElementById('contact-modal').classList.add('hidden')"
+                class="absolute top-8 right-8 text-slate-500 hover:text-white transition-all">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <h2 class="text-4xl font-editorial font-bold mb-8 italic">Contactar con <span
+                    class="text-[var(--primary)]">Habitante.</span></h2>
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2 block">Nombre</label>
+                        <input type="text"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[var(--primary)] transition-all">
+                    </div>
+                    <div>
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2 block">Email</label>
+                        <input type="email"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[var(--primary)] transition-all">
+                    </div>
+                </div>
+                <div>
+                    <label
+                        class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2 block">Motivo</label>
+                    <select
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[var(--primary)] transition-all text-slate-400">
+                        <option>Inversión Crowdfunding</option>
+                        <option>Inversionista Institucional</option>
+                        <option>Comprar Vivienda</option>
+                        <option>Otros</option>
+                    </select>
+                </div>
+                <div>
+                    <label
+                        class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2 block">Mensaje</label>
+                    <textarea rows="4"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[var(--primary)] transition-all"></textarea>
+                </div>
+                <button
+                    class="w-full bg-[var(--primary)] text-black py-5 rounded-2xl font-bold text-lg hover:brightness-110 shadow-lg">Enviar
+                    solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- AI AGENT LEAD CAPTURE MODAL -->
+    <!-- AI AGENT LEAD CAPTURE MODAL -->
+    <div id="ai-lead-modal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-6">
+        <!-- Overlay translúcido más suave -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onclick="document.getElementById('ai-lead-modal').classList.add('hidden')"></div>
+
+        <!-- Tarjeta translúcida con diseño glassmorphism más ligero -->
+        <div
+            class="relative w-full max-w-md rounded-[2.5rem] p-8 md:p-10 border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl">
+
+            <!-- Botón Volver (Flecha Atrás) -->
+            <button onclick="document.getElementById('ai-lead-modal').classList.add('hidden')"
+                class="absolute top-6 left-6 p-3 rounded-full bg-white/5 hover:bg-white/20 transition-all text-white hover:scale-110 z-50 group shadow-lg border border-white/10"
+                aria-label="Cerrar y volver">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6 group-hover:-translate-x-1 transition-transform">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+
+            <div class="mt-8">
+                <h3 class="text-3xl font-editorial font-bold mb-4 italic text-center">Hablar con <span
+                        class="text-[var(--primary)] text-editorial">Habitante AI.</span></h3>
+                <p class="text-sm text-slate-300 mb-8 font-light italic text-center px-4">Antes de conectarte con
+                    nuestro equipo, por favor
+                    indícanos quién eres.</p>
+
+                <form class="space-y-4"
+                    onsubmit="window.open('https://wa.me/34699440308?text=Hola, soy ' + this.name.value + ' (' + this.email.value + '). Tengo una consulta sobre: ' + this.reason.value); return false;">
+
+                    <div class="space-y-1">
+                        <input type="text" name="name" placeholder="Nombre completo" required
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)]/50 outline-none placeholder:text-slate-500 text-white transition-all">
+                    </div>
+
+                    <div class="space-y-1">
+                        <input type="email" name="email" placeholder="Email" required
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)]/50 outline-none placeholder:text-slate-500 text-white transition-all">
+                    </div>
+
+                    <div class="relative">
+                        <select name="reason"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)]/50 outline-none text-slate-300 appearance-none cursor-pointer transition-all">
+                            <option class="bg-[#1a1a1a] text-slate-400">Consulta General</option>
+                            <option class="bg-[#1a1a1a] text-white">Inversión</option>
+                            <option class="bg-[#1a1a1a] text-white">Venta de Propiedad</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none text-sm">expand_more</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-[var(--primary)] text-black py-4 rounded-xl font-bold text-sm uppercase shadow-lg hover:brightness-110 hover:scale-[1.02] transition-all duration-300 mt-6">
+                        Comenzar conversación
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-8 right-8 z-[999] flex flex-col items-end gap-3 group">
+        <div id="chatTooltip"
+            class="chat-tooltip bg-[var(--bg-dark)] text-white text-xs font-medium py-2.5 px-4 pr-8 rounded-xl shadow-xl relative border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            ¿Necesitas ayuda? <span class="text-[var(--primary)]">Habla con la IA de Habitante</span>
+
+            <!-- Close button -->
+            <button onclick="document.getElementById('chatTooltip').style.display='none'"
+                class="absolute top-1/2 -translate-y-1/2 right-2 w-4 h-4 flex items-center justify-center text-white/50 hover:text-white transition-colors">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Arrow for desktop (right side) -->
+            <div
+                class="hidden md:block absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-[var(--bg-dark)] rotate-45 border-r border-t border-white/10">
+            </div>
+            <!-- Arrow for mobile (bottom right, pointing to icon) -->
+            <div
+                class="block md:hidden absolute right-6 bottom-[-4px] w-2 h-2 bg-[var(--bg-dark)] rotate-45 border-b border-r border-white/10">
+            </div>
+        </div>
+
+        <button onclick="document.getElementById('ai-lead-modal').classList.remove('hidden')"
+            class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-105 group">
+            <!-- Message Icon -->
+            <svg class="w-6 h-6 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                </path>
+            </svg>
+            <!-- Subtle indicator -->
+            <span class="absolute top-2 right-2 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
+        </button>
+    </div>
+
+</body>
+
+</html>
