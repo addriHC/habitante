@@ -1,15 +1,25 @@
-const { createClient } = window.supabase
-
+(function () {
 const supabaseUrl = window.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = window.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
+
+if (!window.supabase?.createClient) {
+    console.error('Supabase library is not loaded')
+    return
+}
+
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing Supabase configuration (url/key)')
+    return
+}
+
+const supabaseClient = window.__habitanteSupabaseClient ||
+    (window.__habitanteSupabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey))
 
 async function loadProjectDetails() {
     const urlParams = new URLSearchParams(window.location.search)
     const projectId = urlParams.get('id')
 
     if (!projectId) {
-        console.error('No project ID found in URL')
         return
     }
 
@@ -66,11 +76,61 @@ function renderProject(promo) {
     const galleryGrid = document.getElementById('project-gallery-grid')
     if (galleryGrid && promo.gallery_images && promo.gallery_images.length > 0) {
         gallerySection.classList.remove('hidden')
-        galleryGrid.innerHTML = promo.gallery_images.map(img => `
-            <div class="rounded-3xl overflow-hidden aspect-video shadow-xl border border-white/5">
+        galleryGrid.innerHTML = promo.gallery_images.map((img, idx) => `
+            <div class="overflow-hidden aspect-video shadow-xl border border-white/5 cursor-pointer" data-index="${idx}">
                 <img src="${img}" class="w-full h-full object-cover fetch-priority-low" loading="lazy" />
             </div>
         `).join('')
+
+        // set up simple lightbox carousel
+        const galleryItems = galleryGrid.querySelectorAll('[data-index]');
+        const overlay = document.getElementById('lightbox-overlay');
+        const overlayImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+        const closeBtn = document.getElementById('lightbox-close');
+        let currentIndex = 0;
+
+        const showIndex = (idx) => {
+            currentIndex = (idx + promo.gallery_images.length) % promo.gallery_images.length;
+            if (overlayImg) overlayImg.src = promo.gallery_images[currentIndex];
+        };
+
+        const openLightbox = (idx) => {
+            showIndex(idx);
+            if (overlay) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+            }
+        };
+        const closeLightbox = () => {
+            if (overlay) {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+            }
+        };
+
+        galleryItems.forEach(el => {
+            el.addEventListener('click', () => openLightbox(parseInt(el.dataset.index)));
+        });
+        prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); showIndex(currentIndex - 1); });
+        nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); showIndex(currentIndex + 1); });
+        closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+        overlay?.addEventListener('click', (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+        // simple swipe support
+        let touchStartX = 0;
+        overlay?.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        });
+        overlay?.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) {
+                if (dx > 0) showIndex(currentIndex - 1);
+                else showIndex(currentIndex + 1);
+            }
+        });
     }
 
     // Video Section
@@ -214,6 +274,9 @@ function renderProject(promo) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const isProjectDetailPage = !!document.getElementById('project-title') && !!document.getElementById('project-status-badge');
+    if (!isProjectDetailPage) return;
+
     if (window.UI && window.UI.navigation) {
         window.UI.navigation.init();
     }
@@ -249,3 +312,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('close-mobile-menu')?.addEventListener('click', closeMobileMenu);
     document.getElementById('mobile-menu-backdrop')?.addEventListener('click', closeMobileMenu);
 });
+
+})();

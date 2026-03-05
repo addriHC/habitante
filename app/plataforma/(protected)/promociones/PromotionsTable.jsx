@@ -160,7 +160,7 @@ export default function PromotionsTable({ initialData }) {
                     </div>
 
                     <div className="bo-pc-only">
-                        <ActionButton label="Añadir Item" href="/plataforma/promociones/nueva" icon="add" />
+                        <ActionButton label="Añadir" href="/plataforma/promociones/nueva" icon="add" />
                     </div>
                 </div>
             </header>

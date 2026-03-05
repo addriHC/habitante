@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
         rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <script>
+        window.NEXT_PUBLIC_SUPABASE_URL = "https://horwfadbwfgoxxxmhprk.supabase.co";
+        window.NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_w175qXvcWBCqliSK99B6kQ_5LYY1AGU";
+    </script>
 </head>
 
 <body class="antialiased overflow-x-hidden">
@@ -94,7 +98,7 @@
                     </button>
                     <div
                         class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
-                        <a href="plataforma.html"
+                        <a href="plataforma-landing.html"
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso Clientes</a>
                         <a href="contacto.html"
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte Cliente</a>
@@ -193,7 +197,7 @@
                                 class="material-symbols-outlined text-sm transition-transform">expand_more</span>
                         </button>
                         <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
-                            <a href="plataforma.html"
+                            <a href="plataforma-landing.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso Clientes</a>
                             <a href="contacto.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
@@ -246,8 +250,6 @@
                 <!-- Contact Info -->
                 <div class="space-y-10">
                     <div>
-                        <p class="text-[var(--primary)] font-bold tracking-[0.4em] uppercase text-xs mb-6">Canales
-                            Directos</p>
                         <h1 class="text-4xl md:text-5xl font-editorial font-bold mb-8 text-gradient leading-tight">
                             Hablemos de <br />
                             <span class="italic font-normal">tu futuro</span>.
@@ -436,6 +438,15 @@
                                 somos</a></li>
                         <li><a class="hover:text-[var(--primary)] transition-colors"
                                 href="marketplace.html">Marketplace</a></li>
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="plataforma-landing.html">Acceso a
+                                Plataforma</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Backoffice</h5>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="/plataforma/">Acceso al Backoffice</a></li>
                     </ul>
                 </div>
 
@@ -457,17 +468,6 @@
                     </ul>
                 </div>
 
-                <div>
-                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Newsletter</h5>
-                    <p class="text-xs text-slate-500 mb-4 lh-relaxed">Recibe oportunidades exclusivas de inversión cada
-                        mes.</p>
-                    <form class="space-y-3">
-                        <input type="email" placeholder="Tu email..."
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-[var(--primary)] outline-none transition-all">
-                        <button
-                            class="w-full bg-white text-black py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-[var(--primary)] hover:text-white transition-all">Suscribirse</button>
-                    </form>
-                </div>
             </div>
 
             <div
@@ -625,6 +625,15 @@
             <span class="absolute top-2 right-2 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
         </button>
     </div>
+    <!-- Dynamic Content Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="marketplace.js"></script>
+    <script src="proyectos-estudio.js"></script>
+    <script src="project-detail.js"></script>
+    <script src="initiatives-promotions.js"></script>
+    <script src="ui-components.js"></script>
+    <script src="home-promotions.js"></script>
+
 
 </body>
 </html>

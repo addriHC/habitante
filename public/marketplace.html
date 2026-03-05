@@ -99,7 +99,7 @@
                     </button>
                     <div
                         class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
-                        <a href="plataforma.html"
+                        <a href="plataforma-landing.html"
                             class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso
                             Clientes</a>
                         <a href="contacto.html"
@@ -200,7 +200,7 @@
                                 class="material-symbols-outlined text-sm transition-transform">expand_more</span>
                         </button>
                         <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
-                            <a href="plataforma.html"
+                            <a href="plataforma-landing.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso
                                 Clientes</a>
                             <a href="contacto.html"
@@ -343,8 +343,15 @@
                                 somos</a></li>
                         <li><a class="hover:text-[var(--primary)] transition-colors"
                                 href="marketplace.html">Marketplace</a></li>
-                        <li><a class="hover:text-[var(--primary)] transition-colors" href="/plataforma/">Acceso a
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="plataforma-landing.html">Acceso a
                                 Plataforma</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Backoffice</h5>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a class="hover:text-[var(--primary)] transition-colors" href="/plataforma/">Acceso al Backoffice</a></li>
                     </ul>
                 </div>
 
@@ -366,17 +373,6 @@
                     </ul>
                 </div>
 
-                <div>
-                    <h5 class="font-bold mb-6 text-xs uppercase tracking-[0.2em] text-white/40">Newsletter</h5>
-                    <p class="text-xs text-slate-500 mb-4 lh-relaxed">Recibe oportunidades exclusivas de inversión cada
-                        mes.</p>
-                    <form class="space-y-3">
-                        <input type="email" placeholder="Tu email..."
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-[var(--primary)] outline-none transition-all">
-                        <button
-                            class="w-full bg-white text-black py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-[var(--primary)] hover:text-white transition-all">Suscribirse</button>
-                    </form>
-                </div>
             </div>
 
             <div
@@ -520,13 +516,29 @@
                 class="block md:hidden absolute right-6 bottom-[-4px] w-2 h-2 bg-[var(--bg-dark)] rotate-45 border-b border-r border-white/10">
             </div>
         </div>
-        </footer>
 
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script src="ui-components.js"></script>
-        <script src="marketplace.js"></script>
+        <button onclick="document.getElementById('ai-lead-modal').classList.remove('hidden')"
+            class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:scale-105 group">
+            <!-- Message Icon -->
+            <svg class="w-6 h-6 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                </path>
+            </svg>
+            <!-- Subtle indicator -->
+            <span class="absolute top-2 right-2 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
+        </button>
+    </div>
+    <!-- Dynamic Content Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="marketplace.js"></script>
+    <script src="proyectos-estudio.js"></script>
+    <script src="project-detail.js"></script>
+    <script src="initiatives-promotions.js"></script>
+    <script src="ui-components.js"></script>
+    <script src="home-promotions.js"></script>
+
 
 </body>
-
 </html>

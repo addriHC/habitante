@@ -1,9 +1,19 @@
-const { createClient } = window.supabase
-
+(function () {
 const supabaseUrl = window.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = window.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-const supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
+if (!window.supabase?.createClient) {
+    console.error('Supabase library is not loaded')
+    return
+}
+
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing Supabase configuration (url/key)')
+    return
+}
+
+const supabaseClient = window.__habitanteSupabaseClient ||
+    (window.__habitanteSupabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey))
 
 const statusLabels = {
     published: 'Publicado',
@@ -96,3 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('type-filter')?.addEventListener('change', applyFilters)
     document.getElementById('status-filter')?.addEventListener('change', applyFilters)
 })
+
+})();

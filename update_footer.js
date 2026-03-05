@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const indexContent = fs.readFileSync('index.html', 'utf8');
+const indexContent = fs.readFileSync('public/index.html', 'utf8');
 const footerTag = '<footer class="py-16 md:py-24 bg-surface border-t border-white/5">';
 const footerStart = indexContent.indexOf(footerTag);
 const bodyEnd = indexContent.lastIndexOf('</body>');
@@ -13,7 +13,7 @@ if (footerStart === -1 || bodyEnd === -1) {
 }
 
 const footerBlock = indexContent.substring(footerStart, bodyEnd).trim();
-const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== 'index.html');
+const htmlFiles = fs.readdirSync('public').filter(f => f.endsWith('.html') && f !== 'index.html');
 
 htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
@@ -35,7 +35,7 @@ htmlFiles.forEach(file => {
     if (firstFooterIndex !== -1) {
         const headPart = content.substring(0, firstFooterIndex);
         const newContent = headPart + "\n    " + footerBlock + "\n\n</body>\n</html>";
-        fs.writeFileSync(file, newContent);
+        fs.writeFileSync(path.join('public', file), newContent);
         console.log(`Updated ${file}`);
     } else {
         console.warn(`No footer found in ${file}`);

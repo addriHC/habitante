@@ -42,7 +42,6 @@ const UI = {
                     <img src="${imageUrl}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="${promo.name}" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                     <div class="absolute top-6 left-6 flex gap-2">
-                        <span class="px-3 py-1 bg-orange-500/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">${statusLabel}</span>
                         <span class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">${(promo.category || 'MIXTO').toUpperCase()}</span>
                     </div>
                 </div>

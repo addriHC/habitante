@@ -47,6 +47,7 @@ export default function PromotionForm({ initialData = null, isEditing = false })
         drive_link_2: initialData?.drive_link_2 || '',
         profitability: initialData?.profitability || '',
         min_investment: initialData?.min_investment || '',
+        pem: initialData?.pem || '',
         duration_months: initialData?.duration_months || '',
         area_m2: initialData?.area_m2 || '',
         investment_status: initialData?.investment_status || 'En Financiación',
@@ -54,19 +55,32 @@ export default function PromotionForm({ initialData = null, isEditing = false })
         target_funding: initialData?.target_funding || '',
         profitability_type: initialData?.profitability_type || 'total',
         description: initialData?.description || '',
+        metadata: initialData?.metadata || { is_initiative: false },
     })
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target
+        const { name, value, type, checked } = e.target
+        const val = type === 'checkbox' ? checked : value
+
         setFormData(prev => {
-            const next = { ...prev, [name]: value }
+            const next = { ...prev, [name]: val }
             if (name === 'project_type') {
-                if (value === 'estudio') next.investment_status = 'En Estudio'
-                if (value === 'promocion' && (prev.investment_status === 'En Estudio')) next.investment_status = 'En Financiación'
+                if (val === 'estudio') next.investment_status = 'En Estudio'
+                if (val === 'promocion' && (prev.investment_status === 'En Estudio')) next.investment_status = 'En Financiación'
             }
             return next
         })
         if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }))
+    }
+
+    const handleMetadataChange = (key, value) => {
+        setFormData(prev => ({
+            ...prev,
+            metadata: {
+                ...prev.metadata,
+                [key]: value
+            }
+        }))
     }
 
     const removeExistingImage = (idx) => {
@@ -154,6 +168,7 @@ export default function PromotionForm({ initialData = null, isEditing = false })
                 ...formData,
                 profitability: formData.profitability ? parseFloat(formData.profitability) : 0,
                 min_investment: formData.min_investment ? parseFloat(formData.min_investment) : 0,
+                pem: formData.pem ? parseFloat(formData.pem) : 0,
                 target_funding: formData.target_funding ? parseFloat(formData.target_funding) : 0,
                 duration_months: formData.duration_months ? parseInt(formData.duration_months) : 0,
                 area_m2: formData.area_m2 ? parseFloat(formData.area_m2) : 0,
@@ -253,6 +268,21 @@ export default function PromotionForm({ initialData = null, isEditing = false })
                             </FormField>
                             <FormField label="Prioridad" name="priority" type="number" icon="low_priority" value={formData.priority} onChange={handleInputChange} />
                         </div>
+                        <div className="bo-grid-2">
+                            <FormField label="Destacar como Iniciativa" icon="star">
+                                <div style={{ display: 'flex', alignItems: 'center', height: '48px', padding: '0 18px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '16px' }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={formData.metadata?.is_initiative || false} 
+                                        onChange={(e) => handleMetadataChange('is_initiative', e.target.checked)}
+                                        style={{ width: '20px', height: '20px', accentColor: 'var(--primary)', cursor: 'pointer' }}
+                                    />
+                                    <span style={{ marginLeft: '12px', color: '#f8fafc', fontSize: '0.9rem' }}>
+                                        Mostrar en la sección "Iniciativas"
+                                    </span>
+                                </div>
+                            </FormField>
+                        </div>
                     </FormSection>
                 </div>
 
@@ -270,15 +300,15 @@ export default function PromotionForm({ initialData = null, isEditing = false })
                         </div>
                         <div className="bo-grid-2 bo-grid-mobile-2">
                             <FormField label="Meta Fondo (€) *" name="target_funding" type="number" value={formData.target_funding} onChange={handleInputChange} icon="payments" />
+                            <FormField label="PEM (€)" name="pem" type="number" value={formData.pem} onChange={handleInputChange} icon="account_balance_wallet" />
+                        </div>
+                        <div className="bo-grid-2 bo-grid-mobile-2">
                             <FormField label="Inv. Mínima (€)" name="min_investment" type="number" value={formData.min_investment} onChange={handleInputChange} icon="euro" />
-                        </div>
-                        <div className="bo-grid-2 bo-grid-mobile-2">
                             <FormField label="Plazo (Meses)" name="duration_months" type="number" value={formData.duration_months} onChange={handleInputChange} icon="calendar_month" />
-                            <FormField label="Superficie (m2)" name="area_m2" type="number" step="0.01" value={formData.area_m2} onChange={handleInputChange} icon="straighten" />
                         </div>
                         <div className="bo-grid-2 bo-grid-mobile-2">
+                            <FormField label="Superficie (m2)" name="area_m2" type="number" step="0.01" value={formData.area_m2} onChange={handleInputChange} icon="straighten" />
                             <FormField label="Progreso (%)" name="progress_percentage" type="number" value={formData.progress_percentage} onChange={handleInputChange} icon="construction" />
-                            <div />
                         </div>
                         <FormField label="Estado Operativo" icon="currency_exchange">
                             <select name="investment_status" className="bo-select" value={formData.investment_status} onChange={handleInputChange} disabled={formData.project_type === 'estudio'}>
@@ -385,6 +415,10 @@ export default function PromotionForm({ initialData = null, isEditing = false })
                                 <div className="bo-info-card">
                                     <strong>Meta Fondo</strong>
                                     <p>{parseInt(formData.target_funding || 0).toLocaleString()} €</p>
+                                </div>
+                                <div className="bo-info-card">
+                                    <strong>PEM</strong>
+                                    <p>{parseInt(formData.pem || 0).toLocaleString()} €</p>
                                 </div>
                                 <div className="bo-info-card">
                                     <strong>Estado Operativo</strong>

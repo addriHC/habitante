@@ -1,8 +1,19 @@
-const { createClient } = window.supabase
-
+(function () {
 const supabaseUrl = window.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = window.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
+
+if (!window.supabase?.createClient) {
+    console.error('Supabase library is not loaded')
+    return
+}
+
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing Supabase configuration (url/key)')
+    return
+}
+
+const supabaseClient = window.__habitanteSupabaseClient ||
+    (window.__habitanteSupabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey))
 
 async function loadHomePromotions() {
     const marketplaceSection = document.getElementById('marketplace')
@@ -14,6 +25,22 @@ async function loadHomePromotions() {
     console.log("loadHomePromotions started, grid found")
 
     try {
+        // first, compute active (non-archived) promotion count separately
+        const { count: activeCount, error: countError } = await supabaseClient
+            .from('promotions')
+            .select('id', { count: 'exact', head: true })
+            .neq('status', 'archived')
+
+        if (countError) {
+            console.error('Error fetching active promotions count:', countError)
+        } else if (typeof activeCount === 'number') {
+            const counterEl = document.getElementById('active-count')
+            if (counterEl) {
+                // show number with plus sign if there are any promotions
+                counterEl.textContent = activeCount + (activeCount > 0 ? '' : '')
+            }
+        }
+
         const { data: promotions, error } = await supabaseClient
             .from('promotions')
             .select('*')
@@ -47,3 +74,5 @@ async function loadHomePromotions() {
 }
 
 document.addEventListener('DOMContentLoaded', loadHomePromotions)
+
+})();
