@@ -37,7 +37,7 @@ async function loadHomePromotions() {
             const counterEl = document.getElementById('active-count')
             if (counterEl) {
                 // show number with plus sign if there are any promotions
-                counterEl.textContent = activeCount + (activeCount > 0 ? '' : '')
+                counterEl.textContent = activeCount + (activeCount > 0 ? '+' : '')
             }
         }
 
