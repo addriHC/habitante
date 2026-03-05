@@ -1,3 +1,4 @@
+Deja
 <!DOCTYPE html>
 <html class="scroll-smooth dark" lang="es">
 
@@ -23,7 +24,7 @@
 <body class="antialiased overflow-x-hidden">
 
     <!-- NAVIGATION (Matches Home) -->
-        <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+    <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
         <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
 
             <div class="flex items-center">
@@ -100,9 +101,11 @@
                     <div
                         class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
                         <a href="plataforma.html"
-                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso Clientes</a>
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso
+                            Clientes</a>
                         <a href="contacto.html"
-                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte Cliente</a>
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte
+                            Cliente</a>
                     </div>
                 </div>
             </div>
@@ -114,7 +117,7 @@
             </div>
         </div>
     </nav>
-        <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
@@ -199,7 +202,8 @@
                         </button>
                         <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
                             <a href="plataforma.html"
-                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso Clientes</a>
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso
+                                Clientes</a>
                             <a href="contacto.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
                         </div>
@@ -212,6 +216,19 @@
         function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
         document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
         function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
+
+        function toggleProject(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                el.classList.add('animate-fadeIn');
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 
     <!-- HEADER / FILTERS -->
@@ -303,7 +320,7 @@
     </section>
 
     <!-- FOOTER -->
-    
+
     <footer class="py-16 md:py-24 bg-surface border-t border-white/5">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
@@ -504,12 +521,13 @@
                 class="block md:hidden absolute right-6 bottom-[-4px] w-2 h-2 bg-[var(--bg-dark)] rotate-45 border-b border-r border-white/10">
             </div>
         </div>
-    </footer>
+        </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="ui-components.js"></script>
-    <script src="marketplace.js"></script>
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="ui-components.js"></script>
+        <script src="marketplace.js"></script>
 
 </body>
+
 </html>

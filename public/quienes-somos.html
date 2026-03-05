@@ -332,12 +332,13 @@
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-12 items-start">
-                            <div class="md:text-right md:pr-16">
+                            <!-- Mobile-friendly order: Year/Title first, Description second -->
+                            <div class="md:order-2 md:pl-16">
                                 <h3 class="text-3xl font-bold mb-1">2023</h3>
                                 <h4 class="text-xl font-editorial italic text-slate-400">Modelo Habitante</h4>
                             </div>
-                            <div class="md:pl-16">
-                                <p class="text-slate-500 leading-relaxed text-lg max-w-md">
+                            <div class="md:order-1 md:text-right md:pr-16">
+                                <p class="text-slate-500 leading-relaxed text-lg max-w-md ml-auto">
                                     Integración de PropTech y Crowdfunding para democratizar el acceso al sector
                                     inmobiliario mediante tecnología y transparencia.
                                 </p>
@@ -373,17 +374,17 @@
                         <div
                             class="hidden md:flex absolute left-1/2 -translate-x-1/2 top-0 items-center justify-center">
                             <div
-                                class="h-10 w-10 rounded-full bg-[var(--bg-dark)] border border-[var(--primary)] flex items-center justify-center z-10 text-[10px] font-bold text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">
+                                class="h-10 w-10 rounded-full bg-[var(--bg-dark)] border border-[var(--primary)] flex items-center justify-center z-10 text-[10px] font-bold text-[var(--primary)] group-hover:scale-110 transition-all duration-500">
                                 04
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-12 items-start">
-                            <div class="md:text-right md:pr-16">
+                            <div class="md:order-2 md:pl-16">
                                 <h3 class="text-3xl font-bold mb-1">2026</h3>
                                 <h4 class="text-xl font-editorial italic text-slate-400">Crecimiento del grupo</h4>
                             </div>
-                            <div class="md:pl-16">
-                                <p class="text-slate-500 leading-relaxed text-lg max-w-md">
+                            <div class="md:order-1 md:text-right md:pr-16">
+                                <p class="text-slate-500 leading-relaxed text-lg max-w-md ml-auto">
                                     Constitución de nuevas sociedades enfocadas a la promoción de los activos en cartera
                                     y expansión del ecosistema digital.
                                 </p>
