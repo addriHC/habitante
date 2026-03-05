@@ -1,3 +1,4 @@
+Deja
 <!DOCTYPE html>
 <html class="scroll-smooth dark" lang="es">
 
@@ -18,7 +19,7 @@
 <body class="antialiased overflow-x-hidden">
 
     <!-- NAVIGATION (Matches Home) -->
-        <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
+    <nav class="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-6xl">
         <div class="glass-nav rounded-xl md:rounded-2xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
 
             <div class="flex items-center">
@@ -95,9 +96,11 @@
                     <div
                         class="absolute top-full left-0 mt-2 w-56 glass-nav rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
                         <a href="plataforma.html"
-                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso Clientes</a>
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors border-b border-white/5">Acceso
+                            Clientes</a>
                         <a href="contacto.html"
-                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte Cliente</a>
+                            class="block px-6 py-3 text-sm hover:text-[var(--primary)] transition-colors">Hazte
+                            Cliente</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +112,7 @@
             </div>
         </div>
     </nav>
-        <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[200] hidden">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMobileMenu()"></div>
@@ -194,7 +197,8 @@
                         </button>
                         <div id="plataforma-dropdown" class="hidden pl-4 pb-2 space-y-2">
                             <a href="plataforma.html"
-                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso Clientes</a>
+                                class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Acceso
+                                Clientes</a>
                             <a href="contacto.html"
                                 class="block py-2 text-sm text-slate-400 hover:text-[var(--primary)]">Hazte Cliente</a>
                         </div>
@@ -207,6 +211,19 @@
         function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow = ''; }
         document.getElementById('mobile-menu-btn').addEventListener('click', function () { document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
         function toggleMobileDropdown(name) { const dropdown = document.getElementById(name + '-dropdown'); const icon = document.getElementById(name + '-icon'); if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { dropdown.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; } }
+
+        function toggleProject(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                el.classList.add('animate-fadeIn');
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 
     <!-- HEADER / FILTERS -->
@@ -286,10 +303,10 @@
         <div class="container mx-auto px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Asset Card -->
+                <!-- Card 1: Santa María de Gracia -->
                 <div
                     class="group bg-[#0A0A0A] rounded-[3rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-[var(--primary)]/50 hover:-translate-y-2">
-                    <div class="relative h-[350px] overflow-hidden">
+                    <div class="relative h-[300px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000"
                             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             alt="Santa María" />
@@ -308,14 +325,89 @@
                         <p class="text-sm text-slate-500 mb-8 font-light leading-relaxed">Promoción de viviendas de alta
                             gama con personalización BIM en Camas, Sevilla.</p>
 
-                        <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-8 mb-8">
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Rentabilidad</p>
-                                <span class="text-xl font-bold text-[var(--primary)]">12.5%</span>
+                        <!-- Project Dropdown Button -->
+                        <button onclick="toggleProject('details-1')"
+                            class="flex items-center gap-2 text-[var(--primary)] font-bold text-[10px] uppercase tracking-widest mb-8 hover:opacity-70 transition-all border-b border-[var(--primary)] pb-1">
+                            Detalles del proyecto
+                            <span id="icon-details-1"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+
+                        <!-- Project Details (Hidden by default) -->
+                        <div id="details-1" class="hidden space-y-8 border-t border-white/5 pt-8 mb-8 overflow-hidden">
+                            <!-- Technical Data -->
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-4">
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Inmuebles</p>
+                                    <p class="text-[11px] text-white leading-tight">12 Viviendas, 12 Trasteros, 15
+                                        Garajes</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Alturas</p>
+                                    <p class="text-[11px] text-white leading-tight">Baja + 3 Plantas + Ático</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Superficies</p>
+                                    <p class="text-[11px] text-white leading-tight">90m² a 150m² útiles</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Calidades</p>
+                                    <p class="text-[11px] text-white leading-tight">Acabados Premium Porcelanosa</p>
+                                </div>
+                                <div class="col-span-2">
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Localización</p>
+                                    <p class="text-[11px] text-white leading-tight italic">C/ Santa María de Gracia,
+                                        Camas, Sevilla</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Precios</p>
+                                    <p class="text-lg font-bold text-[var(--primary)]">Desde 220.000€</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Inversión Desde</p>
-                                <span class="text-xl font-bold">500€</span>
+
+                            <!-- Dosier & Plans Section -->
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                    Documentación</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="#"
+                                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase hover:bg-white/10 transition-all">
+                                        <span class="material-symbols-outlined text-sm">description</span> Dosier de
+                                        Venta
+                                    </a>
+                                    <a href="#"
+                                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase hover:bg-white/10 transition-all">
+                                        <span class="material-symbols-outlined text-sm">architecture</span> Ver Planos
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Visualization Section -->
+                            <div class="space-y-4">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-2 tracking-widest">
+                                    Visualización 3D</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">image</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Estático</span>
+                                    </div>
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">play_circle</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Dinámico</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -325,10 +417,10 @@
                     </div>
                 </div>
 
-                <!-- Repeat Card 2 -->
+                <!-- Card 2: Castellana Exclusive -->
                 <div
                     class="group bg-[#0A0A0A] rounded-[3rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-[var(--primary)]/50 hover:-translate-y-2">
-                    <div class="relative h-[350px] overflow-hidden">
+                    <div class="relative h-[300px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000"
                             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             alt="Diagonal Green" />
@@ -336,25 +428,93 @@
                         </div>
                         <div class="absolute top-6 left-6 flex gap-2">
                             <span
-                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-orange-400">EN
-                                ESTUDIO</span>
+                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">EN
+                                CURSO</span>
                             <span
-                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">RETAIL</span>
+                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">OFICINAS</span>
                         </div>
                     </div>
                     <div class="p-10">
-                        <h3 class="text-3xl font-editorial font-bold mb-2">Diagonal Green Retail</h3>
-                        <p class="text-sm text-slate-500 mb-8 font-light leading-relaxed">Local comercial prime en
-                            Barcelona con contrato de larga duración.</p>
+                        <h3 class="text-3xl font-editorial font-bold mb-2">Castellana Exclusive</h3>
+                        <p class="text-sm text-slate-500 mb-8 font-light leading-relaxed">Edificio de oficinas exclusivo
+                            en el corazón financiero con tecnología BIM 10D.</p>
 
-                        <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-8 mb-8">
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Rentabilidad</p>
-                                <span class="text-xl font-bold text-[var(--primary)]">10.2%</span>
+                        <!-- Project Dropdown Button -->
+                        <button onclick="toggleProject('details-2')"
+                            class="flex items-center gap-2 text-[var(--primary)] font-bold text-[10px] uppercase tracking-widest mb-8 hover:opacity-70 transition-all border-b border-[var(--primary)] pb-1">
+                            Detalles del proyecto
+                            <span id="icon-details-2"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+
+                        <!-- Project Details (Hidden by default) -->
+                        <div id="details-2" class="hidden space-y-8 border-t border-white/5 pt-8 mb-8 overflow-hidden">
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-4">
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Inmuebles</p>
+                                    <p class="text-[11px] text-white leading-tight">Oficinas Modulares, 3 Locales, 45
+                                        Parking</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Alturas</p>
+                                    <p class="text-[11px] text-white leading-tight">Baja + 12 Plantas + 3 Sótano</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Superficies</p>
+                                    <p class="text-[11px] text-white leading-tight">Desde 200m² a 1200m²</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Calidades</p>
+                                    <p class="text-[11px] text-white leading-tight">LED Gold / Climatización VRF</p>
+                                </div>
+                                <div class="col-span-2">
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Localización</p>
+                                    <p class="text-[11px] text-white leading-tight italic">Pº de la Castellana, Madrid
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Precios</p>
+                                    <p class="text-lg font-bold text-white uppercase italic">Consultar</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Inversión Desde</p>
-                                <span class="text-xl font-bold">1.500€</span>
+
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                    Documentación</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="#"
+                                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase hover:bg-white/10 transition-all">
+                                        <span class="material-symbols-outlined text-sm">description</span> Dosier de
+                                        Venta
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-2 tracking-widest">
+                                    Visualización 3D</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">image</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Estático</span>
+                                    </div>
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">play_circle</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Dinámico</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -364,10 +524,10 @@
                     </div>
                 </div>
 
-                <!-- Repeat Card 3 -->
+                <!-- Card 3: Diagonal Green -->
                 <div
                     class="group bg-[#0A0A0A] rounded-[3rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-[var(--primary)]/50 hover:-translate-y-2">
-                    <div class="relative h-[350px] overflow-hidden">
+                    <div class="relative h-[300px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1984"
                             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             alt="Malaga" />
@@ -375,24 +535,92 @@
                         </div>
                         <div class="absolute top-6 left-6 flex gap-2">
                             <span
-                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">PRE-VENTA</span>
+                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-orange-400">EN
+                                CURSO</span>
                             <span
-                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">VILLA</span>
+                                class="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">RETAIL</span>
                         </div>
                     </div>
                     <div class="p-10">
-                        <h3 class="text-3xl font-editorial font-bold mb-2">Residencial Málaga Sun</h3>
-                        <p class="text-sm text-slate-500 mb-8 font-light leading-relaxed">Viviendas unifamiliares con
-                            vistas al mar y máxima eficiencia energética.</p>
+                        <h3 class="text-3xl font-editorial font-bold mb-2">Diagonal Green</h3>
+                        <p class="text-sm text-slate-500 mb-8 font-light leading-relaxed">Local comercial prime en
+                            Barcelona con contrato de larga duración.</p>
 
-                        <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-8 mb-8">
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Rentabilidad</p>
-                                <span class="text-xl font-bold text-[var(--primary)]">13.8%</span>
+                        <!-- Project Dropdown Button -->
+                        <button onclick="toggleProject('details-3')"
+                            class="flex items-center gap-2 text-[var(--primary)] font-bold text-[10px] uppercase tracking-widest mb-8 hover:opacity-70 transition-all border-b border-[var(--primary)] pb-1">
+                            Detalles del proyecto
+                            <span id="icon-details-3"
+                                class="material-symbols-outlined text-sm transition-transform">expand_more</span>
+                        </button>
+
+                        <!-- Project Details (Hidden by default) -->
+                        <div id="details-3" class="hidden space-y-8 border-t border-white/5 pt-8 mb-8 overflow-hidden">
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-4">
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Inmuebles</p>
+                                    <p class="text-[11px] text-white leading-tight">Macro-local Retail, Almacén, Parking
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Alturas</p>
+                                    <p class="text-[11px] text-white leading-tight">Planta Baja + Planta Técnica</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Superficies</p>
+                                    <p class="text-[11px] text-white leading-tight">850m² superficie total</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Calidades</p>
+                                    <p class="text-[11px] text-white leading-tight">Diseño de vanguardia / Eco-store</p>
+                                </div>
+                                <div class="col-span-2">
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Localización</p>
+                                    <p class="text-[11px] text-white leading-tight italic">Av. Diagonal, Barcelona</p>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                        Precios</p>
+                                    <p class="text-lg font-bold text-white uppercase italic">En Rentabilidad</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1">Inversión Desde</p>
-                                <span class="text-xl font-bold">500€</span>
+
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-1 tracking-widest">
+                                    Documentación</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="#"
+                                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase hover:bg-white/10 transition-all">
+                                        <span class="material-symbols-outlined text-sm">description</span> Dosier de
+                                        Venta
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <p class="text-[9px] text-slate-600 uppercase font-black mb-2 tracking-widest">
+                                    Visualización 3D</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">image</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Estático</span>
+                                    </div>
+                                    <div
+                                        class="aspect-video bg-white/5 rounded-2xl flex flex-col items-center justify-center border border-white/10 group/render cursor-pointer hover:bg-white/10 transition-all">
+                                        <span
+                                            class="material-symbols-outlined text-xl text-slate-600 group-hover/render:text-[var(--primary)] mb-1">play_circle</span>
+                                        <span class="text-[8px] font-bold uppercase text-slate-500">Render
+                                            Dinámico</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -414,7 +642,7 @@
     </section>
 
     <!-- FOOTER -->
-    
+
     <footer class="py-16 md:py-24 bg-surface border-t border-white/5">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
@@ -629,4 +857,5 @@
     </div>
 
 </body>
+
 </html>
