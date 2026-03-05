@@ -28,7 +28,6 @@ export function FormField({ label, name, type = 'text', children, icon, error, .
                     type={type}
                     className={`bo-input ${error ? 'error' : ''}`}
                     {...props}
-                    value={props.value ?? ''}
                 />
             )}
             {error && <span className="bo-field-error">{error}</span>}
