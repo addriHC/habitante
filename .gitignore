@@ -27,3 +27,10 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build output
+dist
+
+# firebase
+/firebase-debug.log
+.firebase
