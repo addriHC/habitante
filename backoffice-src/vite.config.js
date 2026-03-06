@@ -5,9 +5,9 @@ import path from 'node:path';
 export default defineConfig({
   plugins: [react()],
   root: path.resolve(__dirname),
-  base: '/plataforma/',
+  base: '/backoffice/',
   build: {
-    outDir: path.resolve(__dirname, '../public/plataforma'),
+    outDir: path.resolve(__dirname, '../public/backoffice'),
     emptyOutDir: true
   }
 });

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { StatusPill, ActionButton, ActionMenu, useToasts } from '@/app/plataforma/components/ui/Atoms'
+import { StatusPill, ActionButton, ActionMenu, useToasts } from '@/app/backoffice/components/ui/Atoms'
 
 export default function PromotionsTable({ initialData }) {
     const router = useRouter()

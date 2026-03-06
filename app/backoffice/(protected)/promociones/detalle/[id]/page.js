@@ -1,6 +1,6 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect, notFound } from 'next/navigation'
-import { StatusPill, ActionButton, StatCard, DetailBlock, LinkRow } from '@/app/plataforma/components/ui/Atoms'
+import { StatusPill, ActionButton, StatCard, DetailBlock, LinkRow } from '@/app/backoffice/components/ui/Atoms'
 
 export default async function PromotionDetailPage({ params }) {
     const { id } = await params

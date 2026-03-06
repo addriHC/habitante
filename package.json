@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "backoffice:dev": "vite --config backoffice/vite.config.js",
-    "backoffice:build": "vite build --config backoffice/vite.config.js",
-    "backoffice:preview": "vite preview --config backoffice/vite.config.js"
+    "backoffice:dev": "vite --config backoffice-src/vite.config.js",
+    "backoffice:build": "vite build --config backoffice-src/vite.config.js",
+    "backoffice:preview": "vite preview --config backoffice-src/vite.config.js"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",

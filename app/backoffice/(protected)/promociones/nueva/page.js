@@ -1,4 +1,4 @@
-import PromotionForm from '@/app/plataforma/components/PromotionForm'
+import PromotionForm from '@/app/backoffice/components/PromotionForm'
 
 export default function NewPromotionPage() {
     return (

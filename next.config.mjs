@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      { source: '/plataforma', destination: '/backoffice', permanent: true },
+      { source: '/plataforma/:path*', destination: '/backoffice/:path*', permanent: true }
+    ];
+  },
+
   async rewrites() {
     return [
       { source: '/', destination: '/index.html' },
@@ -10,7 +17,6 @@ const nextConfig = {
       { source: '/proyecto-detalle', destination: '/proyecto-detalle.html' },
       { source: '/inversores', destination: '/inversores.html' },
       { source: '/iniciativas', destination: '/iniciativas.html' },
-      // { source: '/plataforma', destination: '/plataforma/index.html' },
       { source: '/recursos', destination: '/recursos.html' },
       { source: '/contacto', destination: '/contacto.html' }
     ];

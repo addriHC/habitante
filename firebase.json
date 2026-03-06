@@ -19,6 +19,7 @@
     "source": ".",
     "ignore": [
       "firebase.json",
+      "backoffice-src/**",
       "**/.*",
       "**/node_modules/**"
     ],

@@ -6,29 +6,37 @@ export async function updateSession(request) {
         request,
     })
 
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-        {
-            cookies: {
-                getAll() {
-                    return request.cookies.getAll()
+    try {
+        const supabase = createServerClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL,
+            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            {
+                cookies: {
+                    getAll() {
+                        return request.cookies.getAll()
+                    },
+                    setAll(cookiesToSet) {
+                        cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+                        supabaseResponse = NextResponse.next({
+                            request,
+                        })
+                        cookiesToSet.forEach(({ name, value, options }) =>
+                            supabaseResponse.cookies.set(name, value, options)
+                        )
+                    },
                 },
-                setAll(cookiesToSet) {
-                    cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-                    supabaseResponse = NextResponse.next({
-                        request,
-                    })
-                    cookiesToSet.forEach(({ name, value, options }) =>
-                        supabaseResponse.cookies.set(name, value, options)
-                    )
-                },
-            },
-        }
-    )
+            }
+        )
 
-    // refreshing the auth token
-    await supabase.auth.getUser()
+        // refreshing the auth token with timeout
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Auth check timeout')), 5000)
+        )
+        await Promise.race([supabase.auth.getUser(), timeoutPromise])
+    } catch (error) {
+        // Silently fail - don't break the middleware
+        console.error('Middleware auth check failed:', error.message)
+    }
 
     return supabaseResponse
 }

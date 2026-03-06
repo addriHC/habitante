@@ -1,6 +1,6 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect, notFound } from 'next/navigation'
-import { StatusPill, ActionButton, StatCard, DetailBlock, LinkRow } from '@/app/plataforma/components/ui/Atoms'
+import { StatusPill, ActionButton, StatCard, DetailBlock, LinkRow } from '@/app/backoffice/components/ui/Atoms'
 
 export default async function PromotionDetailPage({ params }) {
     const { id } = await params
@@ -9,6 +9,7 @@ export default async function PromotionDetailPage({ params }) {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) redirect('/backoffice/login')
 
+    // Fetch promotion with editor email if user_id is linked to auth.users (simplified here)
     const { data: promotion } = await supabase
         .from('promotions')
         .select('*')
@@ -87,10 +88,6 @@ export default async function PromotionDetailPage({ params }) {
                                 <StatCard
                                     label="Inversión Mín."
                                     value={`${promotion.min_investment || '0'} €`}
-                                />
-                                <StatCard
-                                    label="Superficie"
-                                    value={`${promotion.area_m2 || '0'} m2`}
                                 />
                                 <StatCard
                                     label="Estado Operativo"

@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server'
-import PromotionForm from '@/app/plataforma/components/PromotionForm'
+import PromotionForm from '@/app/backoffice/components/PromotionForm'
 import { redirect, notFound } from 'next/navigation'
 
 export default async function EditPromotionPage({ params }) {

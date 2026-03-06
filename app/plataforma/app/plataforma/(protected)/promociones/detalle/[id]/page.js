@@ -7,7 +7,7 @@ export default async function PromotionDetailPage({ params }) {
     const supabase = await createClient()
 
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) redirect('/plataforma/login')
+    if (!user) redirect('/backoffice/login')
 
     // Fetch promotion with editor email if user_id is linked to auth.users (simplified here)
     const { data: promotion } = await supabase
@@ -23,7 +23,7 @@ export default async function PromotionDetailPage({ params }) {
             <section className="bo-card bo-card-wide">
                 <header className="bo-app-bar">
                     <div className="bo-app-bar-left">
-                        <a href="/plataforma/promociones" className="bo-back-btn">
+                        <a href="/backoffice/promociones" className="bo-back-btn">
                             <span className="material-symbols-outlined">arrow_back</span>
                         </a>
                         <div>
@@ -35,7 +35,7 @@ export default async function PromotionDetailPage({ params }) {
                     </div>
                     <div className="bo-app-bar-actions">
                         <div className="bo-pc-only">
-                            <ActionButton label="Editar" href={`/plataforma/promociones/editar/${promotion.id}`} icon="edit" />
+                            <ActionButton label="Editar" href={`/backoffice/promociones/editar/${promotion.id}`} icon="edit" />
                         </div>
                     </div>
                 </header>
@@ -140,7 +140,7 @@ export default async function PromotionDetailPage({ params }) {
             <div className="bo-mobile-only">
                 <ActionButton
                     label="Editar"
-                    href={`/plataforma/promociones/editar/${promotion.id}`}
+                    href={`/backoffice/promociones/editar/${promotion.id}`}
                     icon="edit"
                     className="bo-fab-mobile"
                 />

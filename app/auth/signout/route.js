@@ -14,7 +14,7 @@ export async function POST(request) {
     }
 
     const url = new URL(request.url)
-    return NextResponse.redirect(new URL('/plataforma/login', url.origin), {
+    return NextResponse.redirect(new URL('/backoffice/login', url.origin), {
         status: 302,
     })
 }
